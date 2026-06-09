@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>La Liebre y la Tortuga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <input type="radio" name="spread" id="s0" class="ctrl" checked>
+    <input type="radio" name="spread" id="s1" class="ctrl">
+    <input type="radio" name="spread" id="s2" class="ctrl">
+    <input type="radio" name="spread" id="s3" class="ctrl">
+    <input type="radio" name="spread" id="s4" class="ctrl">
+    <input type="radio" name="spread" id="s5" class="ctrl">
+    <input type="radio" name="spread" id="s6" class="ctrl">
+
+    <div class="escritorio">
+        <div class="libro">
+
+            <div class="pila"></div>
+
+            <!-- ═══════════ PÁGINA IZQUIERDA ═══════════ -->
+            <div class="hoja hoja-izq">
+
+                <!-- s1 izq: retratos de personajes -->
+                <div class="pag izq-1">
+                    <div class="retratos-wrap">
+                        <p class="ornamento">❧ Los Personajes ❧</p>
+
+                        <div class="retrato retrato-liebre">
+                            <span class="emoji-retrato">🐇</span>
+                            <div class="retrato-info">
+                                <p class="retrato-nombre">La Liebre</p>
+                                <p class="retrato-tag">⚡ Veloz &nbsp;·&nbsp; 😤 Presumida</p>
+                            </div>
+                        </div>
+
+                        <div class="choque-vs">⚔️</div>
+
+                        <div class="retrato retrato-tortu">
+                            <span class="emoji-retrato">🐢</span>
+                            <div class="retrato-info">
+                                <p class="retrato-nombre">La Tortuga</p>
+                                <p class="retrato-tag">🎯 Constante &nbsp;·&nbsp; 🧘 Paciente</p>
+                            </div>
+                        </div>
+
+                        <div class="estrellas-deco">⭐ ⭐ ⭐</div>
+                    </div>
+                </div>
+
+                <!-- s2 izq: ilustración del desafío -->
+                <div class="pag izq-2">
+                    <div class="pagina-imagen">
+                        <img src="imagenes/tarj_desafio.png" alt="La tortuga y la liebre se encuentran en el bosque"
+                            class="ilus-pagina">
+                        <p class="cap-label">— Capítulo I —</p>
+                    </div>
+                </div>
+
+                <!-- s3 izq: ilustración inicio de carrera -->
+                <div class="pag izq-3">
+                    <div class="pagina-imagen">
+                        <img src="imagenes/tarj_carrera.png" alt="El zorro Agapito da la salida de la carrera"
+                            class="ilus-pagina">
+                        <p class="cap-label">— Capítulo II —</p>
+                    </div>
+                </div>
+
+                <!-- s4 izq: texto cap III -->
+                <div class="pag izq-4">
+                    <div class="pagina-texto">
+                        <p class="cap-label">— Capítulo III —</p>
+                        <h3 class="titulo-cap">La Siesta Fatal</h3>
+                        <div class="linea-deco"></div>
+                        <p>La liebre corrió tan rápido que pronto dejó a la tortuga muy atrás.</p>
+                        <p>Confiada en su enorme ventaja, decidió descansar bajo la sombra de un árbol.</p>
+                        <p><em>"Tengo tiempo de sobra"</em>, pensó. <em>"Esa tortuga jamás podrá alcanzarme."</em></p>
+                        <p>Y así, entre la brisa, la liebre cerró los ojos y se quedó profundamente dormida.</p>
+                    </div>
+                </div>
+
+                <!-- s5 izq: texto cap IV -->
+                <div class="pag izq-5">
+                    <div class="pagina-texto">
+                        <p class="cap-label">— Capítulo IV —</p>
+                        <h3 class="titulo-cap">Paso a Paso</h3>
+                        <div class="linea-deco"></div>
+                        <p>Mientras la liebre roncaba, la tortuga siguió su camino sin descanso alguno.</p>
+                        <p>Un paso, y otro, y otro más. Sin prisa pero sin pausa.</p>
+                        <p>Con determinación, pasó junto a la liebre dormida y siguió adelante, <em>sin mirar
+                                atrás</em>.</p>
+                    </div>
+                </div>
+
+                <!-- s6 izq: ilustración del podio de victoria -->
+                <div class="pag izq-6">
+                    <div class="pagina-imagen victoria-fondo">
+                        <img src="imagenes/victoria_grande.png"
+                            alt="La tortuga gana la carrera, liebre y zorro la felicitan" class="ilus-pagina">
+                        <p class="moraleja">✦ Lento pero constante gana la carrera ✦</p>
+                    </div>
+                </div>
+
+            </div><!-- fin hoja-izq -->
+
+            <!-- Espina central -->
+            <div class="espina"></div>
+
+            <!-- ═══════════ PÁGINA DERECHA ═══════════ -->
+            <div class="hoja hoja-der">
+
+                <!-- s0 der: PORTADA (cubre todo el libro cuando s0 activo) -->
+                <div class="pag der-0">
+                    <div class="portada">
+                        <!-- Marco dorado decorativo -->
+                        <div class="marco-portada"></div>
+
+                        <div class="sol"></div>
+                        <div class="nube" id="nube1"></div>
+                        <div class="nube" id="nube2"></div>
+                        <div class="nube" id="nube3"></div>
+                        <p class="subtitulo-portada">Una Fábula de Esopo</p>
+                        <h1 class="titulo-portada">La Liebre<br>y la Tortuga</h1>
+                        <div class="emojis-portada">
+                            <span class="flotar">🐇</span>
+                            <span class="vs">vs</span>
+                            <span class="flotar">🐢</span>
+                        </div>
+                        <label for="s1" class="btn-portada">
+                            📖 ¡Toca aquí para leer!
+                        </label>
+                        <p class="pista-portada">👆 toca para pasar las hojas</p>
+                    </div>
+                </div>
+
+                <!-- s1 der: tarjetas personajes -->
+                <div class="pag der-1">
+                    <div class="pagina-tarjetas">
+                        <div class="tarjeta">
+                            <div class="giro">
+                                <div class="cara frente c-naranja">
+                                    <span class="ec">🐇</span>
+                                    <h3>La Liebre</h3>
+                                    <p>Veloz y presumida</p>
+                                    <small>Pasa el cursor ↻</small>
+                                </div>
+                                <div class="cara atras c-naranja-c">
+                                    <span class="ec">🐇</span>
+                                    <p>Era la más rápida del bosque. Siempre ganaba y se burlaba de todos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tarjeta">
+                            <div class="giro">
+                                <div class="cara frente c-verde">
+                                    <span class="ec">🐢</span>
+                                    <h3>La Tortuga</h3>
+                                    <p>Lenta pero constante</p>
+                                    <small>Pasa el cursor ↻</small>
+                                </div>
+                                <div class="cara atras c-verde-c">
+                                    <span class="ec">🐢</span>
+                                    <p>Era tranquila y perseverante. Nunca se rendía, avanzaba paso a paso.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav">
+                        <label for="s0" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s2" class="flecha-libro flecha-de">&#9654;</label>
+                    </div>
+                </div>
+
+                <!-- s2 der: texto cap I -->
+                <div class="pag der-2">
+                    <div class="pagina-texto">
+                        <h2 class="titulo-sec">El Desafío</h2>
+                        <p><span class="capital">E</span>n un soleado día, la orgullosa liebre se cruzó con la tortuga y
+                            empezó a reírse de ella.</p>
+                        <p><em>"¿Para qué caminas si nunca llegarás a ningún lado?"</em>, le dijo entre carcajadas.</p>
+                        <p>La tortuga respondió con calma: <em>"Te reto a una carrera. Veremos quién llega
+                                primero."</em></p>
+                        <p>La liebre, confiada, aceptó sin pensarlo dos veces.</p>
+                    </div>
+                    <div class="nav">
+                        <label for="s1" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s3" class="flecha-libro flecha-de">&#9654;</label>
+                    </div>
+                </div>
+
+                <!-- s3 der: animación carrera -->
+                <div class="pag der-3">
+
+                    <h2 class="titulo-carrera">¡A correr!</h2>
+
+                    <!-- Escenario: cielo + pistas + tierra -->
+                    <div class="escenario-carrera">
+
+                        <div class="cielo-carrera">
+                            <span class="nube-c">☁️</span>
+                            <span class="sol-c">☀️</span>
+                            <span class="nube-c">☁️</span>
+                        </div>
+
+                        <div class="pistas-bloque">
+
+                            <div class="carril-wrap">
+                                <span class="nombre-carril">🐇 Liebre</span>
+                                <div class="pista pista-conejo">
+                                    <span class="zzz">💤</span>
+                                    <span class="corredor">🐇</span>
+                                </div>
+                            </div>
+
+                            <div class="carril-wrap">
+                                <span class="nombre-carril">🐢 Tortuga</span>
+                                <div class="pista pista-tortu">
+                                    <span class="corredor caminante">🐢</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="marcadores-carrera">
+                            <span class="marcador">🚩 Salida</span>
+                            <span class="marcador">🏁 Meta</span>
+                        </div>
+
+                    </div>
+
+                    <div class="nav">
+                        <label for="s2" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s4" class="flecha-libro flecha-de">&#9654;</label>
+                    </div>
+                </div>
+
+                <!-- s4 der: ilustración siesta -->
+                <div class="pag der-4">
+                    <div class="pagina-imagen">
+                        <img src="imagenes/tarj_siesta.png"
+                            alt="La liebre duerme bajo el árbol mientras la tortuga avanza" class="ilus-pagina">
+                    </div>
+                    <div class="nav">
+                        <label for="s3" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s5" class="flecha-libro flecha-de">&#9654;</label>
+                    </div>
+                </div>
+
+                <!-- s5 der: ilustración tortuga llega a la meta -->
+                <div class="pag der-5">
+                    <div class="pagina-imagen">
+                        <img src="imagenes/tarj_meta.png" alt="La tortuga cruza la meta mientras la liebre despierta"
+                            class="ilus-pagina">
+                        <p class="pie-ilus">¡La tortuga cruza la meta!</p>
+                    </div>
+                    <div class="nav">
+                        <label for="s4" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s6" class="flecha-libro flecha-de">&#9654;</label>
+                    </div>
+                </div>
+
+                <!-- s6 der: texto victoria -->
+                <div class="pag der-6">
+                    <div class="pagina-texto">
+                        <h2 class="titulo-sec">¡La Victoria!</h2>
+                        <p><span class="capital">C</span>uando la liebre despertó, ya era demasiado tarde. La tortuga
+                            cruzó la meta entre los aplausos de todos los animales del bosque.</p>
+                        <p>La liebre corrió con toda su fuerza, pero no pudo alcanzarla. <em>¡La tortuga había
+                                ganado!</em></p>
+                        <p>Avergonzada, la liebre comprendió: <em>"La constancia vence al orgullo."</em></p>
+                    </div>
+                    <div class="nav">
+                        <label for="s5" class="flecha-libro flecha-iz">&#9664;</label>
+                        <label for="s0" class="flecha-libro flecha-inicio">↺ Inicio</label>
+                    </div>
+                </div>
+
+            </div><!-- fin hoja-der -->
+
+            <!-- Pie del libro -->
+            <div class="pie-libro">
+                <span class="num-pag izq-num"></span>
+                <span class="titulo-pie">La Liebre y la Tortuga</span>
+                <span class="num-pag der-num"></span>
+            </div>
+
+        </div><!-- fin .libro -->
+    </div><!-- fin .escritorio -->
+
+</body>
+
+</html>

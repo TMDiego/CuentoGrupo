@@ -1,0 +1,1817 @@
+:root {
+    --papel: #FFFDF4;
+    --papel-medio: #F5EDD8;
+    --papel-oscuro: #D9C8A0;
+    --espina-color: #7B5310;
+    --texto: #2C1A0E;
+    --texto-suave: #5C3D22;
+    --acento: #C0541A;
+    --acento-claro: #E8845A;
+    --verde: #2E7D32;
+    --dorado: rgba(200, 160, 50, 0.55);
+    --dorado-claro: rgba(200, 160, 50, 0.25);
+    --fuente-t: 'Playfair Display', serif;
+    --fuente-p: 'Lora', serif;
+}
+
+/* ==========================================
+   BASE
+   ========================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-p);
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(90, 40, 10, 0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 50%, rgba(40, 10, 0, 0.5) 0%, transparent 55%),
+        linear-gradient(160deg, #3a1a08 0%, #1a0803 50%, #2e1208 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctrl {
+    display: none;
+}
+
+/* ==========================================
+   ESCRITORIO
+   ========================================== */
+.escritorio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==========================================
+   EL LIBRO
+   ========================================== */
+.libro {
+    position: relative;
+    display: flex;
+    width: min(96vw, 980px);
+    height: min(88vh, 580px);
+    border-radius: 4px 6px 6px 4px;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.6),
+        0 35px 80px rgba(0, 0, 0, 0.75),
+        0 60px 120px rgba(0, 0, 0, 0.4);
+}
+
+.pila {
+    position: absolute;
+    right: -7px;
+    top: 3px;
+    bottom: 3px;
+    width: 9px;
+    background: repeating-linear-gradient(to right,
+            var(--papel-oscuro) 0, var(--papel-oscuro) 1px,
+            var(--papel-medio) 1px, var(--papel-medio) 3px);
+    border-radius: 0 3px 3px 0;
+    z-index: 0;
+}
+
+/* ==========================================
+   HOJAS — con textura de papel
+   ========================================== */
+.hoja {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hoja-izq {
+    background-color: var(--papel);
+    background-image:
+        repeating-linear-gradient(transparent 0px, transparent 27px,
+            rgba(140, 100, 50, 0.07) 27px, rgba(140, 100, 50, 0.07) 28px);
+    background: linear-gradient(to right, #e8d8b8 0%, var(--papel) 22%)
+}
+
+.hoja-der {
+    background-color: var(--papel);
+    background-image:
+        repeating-linear-gradient(transparent 0px, transparent 27px,
+            rgba(140, 100, 50, 0.07) 27px, rgba(140, 100, 50, 0.07) 28px);
+    background: linear-gradient(to left, #ede0c4 0%, var(--papel) 22%);
+}
+
+.hoja-der::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hoja-izq::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(180, 140, 70, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ==========================================
+   ESPINA CENTRAL
+   ========================================== */
+.espina {
+    width: 10px;
+    flex-shrink: 0;
+    height: 100%;
+    background: linear-gradient(to right,
+            #2a1504 0%,
+            #a07010 25%,
+            #d4a820 45%,
+            #b08818 55%,
+            #a07010 75%,
+            #2a1504 100%);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4), -2px 0 8px rgba(0, 0, 0, 0.4);
+    z-index: 6;
+}
+
+/* ==========================================
+   PÁGINAS — ocultas por defecto
+   ========================================== */
+.pag {
+    display: none;
+    position: absolute;
+    inset: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2rem 2rem 4.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+/* ==========================================
+   PORTADA: libro cerrado
+   ========================================== */
+#s0:checked~.escritorio .hoja-izq {
+    display: none;
+}
+
+#s0:checked~.escritorio .espina {
+    display: none;
+}
+
+#s0:checked~.escritorio .hoja-der::before {
+    display: none;
+}
+
+#s0:checked~.escritorio .hoja-der {
+    border-radius: 4px 6px 6px 4px;
+    background: none;
+}
+
+#s0:checked~.escritorio .der-0 {
+    display: flex;
+}
+
+#s0:checked~.escritorio .pie-libro {
+    display: none;
+}
+
+/* ==========================================
+   SPREADS 1–6
+   ========================================== */
+#s1:checked~.escritorio .izq-1 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s1:checked~.escritorio .der-1 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s1:checked~.escritorio .der-0 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+#s2:checked~.escritorio .izq-2 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s2:checked~.escritorio .der-2 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s2:checked~.escritorio .der-1 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+#s3:checked~.escritorio .izq-3 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s3:checked~.escritorio .der-3 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s3:checked~.escritorio .der-2 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+#s4:checked~.escritorio .izq-4 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s4:checked~.escritorio .der-4 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s4:checked~.escritorio .der-3 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+#s5:checked~.escritorio .izq-5 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s5:checked~.escritorio .der-5 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s5:checked~.escritorio .der-4 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+#s6:checked~.escritorio .izq-6 {
+    display: flex;
+    animation: entrarIzq 0.55s ease;
+}
+
+#s6:checked~.escritorio .der-6 {
+    display: flex;
+    animation: voltearHoja 0.55s ease;
+}
+
+#s6:checked~.escritorio .der-5 {
+    display: flex;
+    animation: cerrarHoja 0.55s ease forwards;
+    z-index: 20;
+}
+
+/* ==========================================
+    ANIMACIONES DE VOLTEAR HOJA
+   ========================================== */
+@keyframes cerrarHoja {
+    0% {
+        transform: perspective(1800px) rotateY(0deg);
+        transform-origin: left center;
+        filter: brightness(1);
+        box-shadow: none;
+    }
+
+    40% {
+        filter: brightness(0.5);
+        box-shadow: -25px 0 50px rgba(0, 0, 0, 0.4);
+    }
+
+    100% {
+        transform: perspective(1800px) rotateY(-180deg);
+        transform-origin: left center;
+        filter: brightness(0.05);
+        opacity: 0;
+    }
+}
+
+@keyframes voltearHoja {
+    0% {
+        transform: perspective(1800px) rotateY(-90deg);
+        transform-origin: left center;
+        filter: brightness(0.15);
+    }
+
+    55% {
+        filter: brightness(0.8);
+    }
+
+    100% {
+        transform: perspective(1800px) rotateY(0deg);
+        transform-origin: left center;
+        filter: brightness(1);
+    }
+}
+
+@keyframes entrarIzq {
+    0% {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+
+    45% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================
+    PIE DEL LIBRO
+   ========================================== */
+.pie-libro {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 18px;
+    font-size: 0.65rem;
+    color: #a8906a;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(to top, rgba(250, 240, 220, 0.98), rgba(255, 253, 244, 0.92));
+    border-top: 1px solid rgba(180, 140, 70, 0.2);
+}
+
+.titulo-pie {
+    letter-spacing: 1.5px;
+}
+
+#s1:checked~.escritorio .izq-num::before {
+    content: "1";
+}
+
+#s1:checked~.escritorio .der-num::before {
+    content: "2";
+}
+
+#s2:checked~.escritorio .izq-num::before {
+    content: "3";
+}
+
+#s2:checked~.escritorio .der-num::before {
+    content: "4";
+}
+
+#s3:checked~.escritorio .izq-num::before {
+    content: "5";
+}
+
+#s3:checked~.escritorio .der-num::before {
+    content: "6";
+}
+
+#s4:checked~.escritorio .izq-num::before {
+    content: "7";
+}
+
+#s4:checked~.escritorio .der-num::before {
+    content: "8";
+}
+
+#s5:checked~.escritorio .izq-num::before {
+    content: "9";
+}
+
+#s5:checked~.escritorio .der-num::before {
+    content: "10";
+}
+
+#s6:checked~.escritorio .izq-num::before {
+    content: "11";
+}
+
+#s6:checked~.escritorio .der-num::before {
+    content: "12";
+}
+
+/* ==========================================
+    FLECHAS GRANDES (para niños)
+   ========================================== */
+.nav {
+    position: absolute;
+    bottom: 2.8rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 25;
+    align-items: center;
+}
+
+.flecha-libro {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    user-select: none;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.flecha-iz {
+    background: #e8dcc8;
+    color: #7a6040;
+    border: 2px solid #c8b090;
+    margin-right: 230px;
+}
+
+.flecha-de {
+    background: var(--acento);
+    color: white;
+    border: 3px solid #a03010;
+    box-shadow: 0 4px 14px rgba(192, 84, 26, 0.5);
+    animation: pulso-flecha 2s ease-in-out infinite;
+}
+
+.flecha-inicio {
+    background: var(--verde);
+    color: white;
+    border: 3px solid #1a5020;
+    box-shadow: 0 4px 14px rgba(46, 125, 50, 0.4);
+    font-size: 0.85rem;
+    width: auto;
+    padding: 0 14px;
+    border-radius: 30px;
+    height: 44px;
+
+}
+
+@keyframes pulso-flecha {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 14px rgba(192, 84, 26, 0.5);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(192, 84, 26, 0.7);
+    }
+}
+
+.flecha-iz:hover {
+    transform: scale(1.12);
+}
+
+.flecha-de:hover {
+    transform: scale(1.15);
+    animation: none;
+    box-shadow: 0 6px 20px rgba(192, 84, 26, 0.7);
+}
+
+.flecha-inicio:hover {
+    transform: scale(1.08);
+}
+
+.der-3 .flecha-iz {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+    ANIMACIONES DE EMOJIS
+   ========================================== */
+@keyframes flotar {
+    from {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-12px)
+    }
+}
+
+@keyframes oscilar {
+    from {
+        transform: rotate(-8deg)
+    }
+
+    to {
+        transform: rotate(8deg)
+    }
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-45px)
+    }
+}
+
+@keyframes brillar {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.18);
+        filter: drop-shadow(0 0 12px gold)
+    }
+}
+
+@keyframes sol-lat {
+    from {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px #fcdc91
+    }
+
+    to {
+        transform: scale(1.08);
+        box-shadow: 0 0 40px #fcdc91
+    }
+}
+
+@keyframes nube-andar {
+    from {
+        left: -20%
+    }
+
+    to {
+        left: 120%
+    }
+}
+
+@keyframes parpadear-zzz {
+
+    0%,
+    12% {
+        opacity: 0
+    }
+
+    45%,
+    78% {
+        opacity: 1
+    }
+
+    82%,
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes corre-conejo {
+    0% {
+        left: 3%
+    }
+
+    15% {
+        left: 60%
+    }
+
+    15.1%,
+    80% {
+        left: 60%
+    }
+
+    100% {
+        left: 84%
+    }
+}
+
+@keyframes camina-tortu {
+    from {
+        left: 3%
+    }
+
+    to {
+        left: 86%
+    }
+}
+
+.flotar {
+    animation: flotar 2s ease-in-out infinite alternate;
+}
+
+.oscilar {
+    animation: oscilar 2s ease-in-out infinite alternate;
+}
+
+.subir {
+    animation: subir 2s ease-in-out infinite alternate;
+}
+
+.brillar {
+    animation: brillar 1.5s ease-in-out infinite alternate;
+}
+
+/* ==========================================
+   PORTADA
+   ========================================== */
+.portada {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            #4aa8d8 0%, #1a6fbd 48%,
+            #5ab55a 48%, #217821 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    overflow: hidden;
+}
+
+.marco-portada {
+    position: absolute;
+    inset: 14px;
+    border: 2px solid var(--dorado);
+    z-index: 4;
+    pointer-events: none;
+}
+
+.marco-portada::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid var(--dorado-claro);
+}
+
+.marco-portada::after {
+    content: '✦';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(220, 180, 60, 0.7);
+    font-size: 1rem;
+    background: #2f8ae0;
+    padding: 0 6px;
+}
+
+.sol {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffe566 0%, #f8bf3a 50%, #e8930a 100%);
+    top: 6%;
+    right: 7%;
+    animation: sol-lat 3s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+.nube {
+    background: rgba(255, 255, 255, 0.92);
+    position: absolute;
+    border-radius: 40px;
+    animation: nube-andar 20s linear infinite;
+    z-index: 1;
+}
+
+.nube::before,
+.nube::after {
+    content: '';
+    background: rgba(255, 255, 255, 0.92);
+    position: absolute;
+    border-radius: 50%;
+}
+
+#nube1 {
+    height: 28px;
+    width: 65px;
+    top: 12%;
+    animation-delay: 0s;
+}
+
+#nube1::before {
+    width: 32px;
+    height: 26px;
+    top: -36%;
+    left: 12%;
+}
+
+#nube1::after {
+    width: 32px;
+    height: 26px;
+    top: -24%;
+    left: 32%;
+}
+
+#nube2 {
+    height: 36px;
+    width: 80px;
+    top: 6%;
+    animation-delay: 6s;
+}
+
+#nube2::before {
+    width: 40px;
+    height: 32px;
+    top: -32%;
+    left: 14%;
+}
+
+#nube2::after {
+    width: 40px;
+    height: 32px;
+    top: -21%;
+    left: 30%;
+}
+
+#nube3 {
+    height: 24px;
+    width: 58px;
+    top: 22%;
+    animation-delay: 12s;
+}
+
+#nube3::before {
+    width: 28px;
+    height: 22px;
+    top: -38%;
+    left: 12%;
+}
+
+#nube3::after {
+    width: 28px;
+    height: 22px;
+    top: -26%;
+    left: 30%;
+}
+
+.subtitulo-portada {
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.88);
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+.titulo-portada {
+    font-family: var(--fuente-t);
+    font-size: 3rem;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.12;
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 255, 255, 0.1);
+    z-index: 5;
+}
+
+.emojis-portada {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: 2.8rem;
+    z-index: 5;
+}
+
+.vs {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--fuente-t);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-portada {
+    z-index: 5;
+    padding: 14px 32px;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    color: #fff;
+    font-family: var(--fuente-p);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.5px;
+    animation: rebotar-boton 1.4s ease-in-out infinite;
+}
+
+.btn-portada:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    animation: none;
+}
+
+@keyframes rebotar-boton {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    50% {
+        transform: translateY(-7px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.pista-portada {
+    z-index: 5;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    margin-top: -0.3rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================
+   PÁGINAS DECORATIVAS (izquierda)
+   ========================================== */
+.pagina-deco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.7rem;
+    height: 100%;
+    padding: 2rem 1.5rem;
+}
+
+.ornamento {
+    font-size: 1.6rem;
+    color: var(--acento);
+    opacity: 0.5;
+    line-height: 1;
+}
+
+.num-romano {
+    font-family: var(--fuente-t);
+    font-size: 6.5rem;
+    color: rgba(192, 84, 26, 0.12);
+    line-height: 1;
+    font-style: italic;
+    text-shadow: 2px 2px 0 rgba(192, 84, 26, 0.06);
+}
+
+.num-romano-peq {
+    font-family: var(--fuente-t);
+    font-size: 4rem;
+    color: rgba(192, 84, 26, 0.12);
+    line-height: 1;
+    font-style: italic;
+}
+
+.titulo-deco {
+    font-family: var(--fuente-t);
+    font-size: 2.1rem;
+    font-style: italic;
+    color: var(--texto);
+    line-height: 1.2;
+}
+
+.titulo-cap {
+    font-family: var(--fuente-t);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--texto);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.linea-deco {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--acento), transparent);
+    border-radius: 2px;
+    margin: 0.1rem 0;
+}
+
+.texto-deco {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+    line-height: 1.75;
+    font-style: italic;
+    text-align: center;
+    max-width: 220px;
+}
+
+.dialogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.ei {
+    font-size: 3rem;
+}
+
+.bocadillo {
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-size: 0.72rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 155px;
+    font-family: var(--fuente-p);
+}
+
+.b-liebre {
+    border: 2px solid var(--acento);
+    color: var(--acento);
+    background: rgba(192, 84, 26, 0.05);
+}
+
+.b-tortu {
+    border: 2px solid var(--verde);
+    color: var(--verde);
+    background: rgba(46, 125, 50, 0.05);
+}
+
+/* ==========================================
+   PÁGINAS DE TEXTO (historia)
+   ========================================== */
+.pagina-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    height: 100%;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.titulo-sec {
+    font-family: var(--fuente-t);
+    font-size: 1.65rem;
+    font-style: italic;
+    color: var(--texto);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--papel-oscuro);
+    margin-bottom: 0.2rem;
+    position: relative;
+}
+
+.titulo-sec::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--acento);
+    border-radius: 2px;
+}
+
+.pagina-texto p {
+    font-size: 0.83rem;
+    line-height: 1.95;
+    color: var(--texto-suave);
+    text-align: justify;
+    hyphens: auto;
+}
+
+.pagina-texto em {
+    color: var(--acento);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.capital {
+    float: left;
+    font-family: var(--fuente-t);
+    font-size: 3.6rem;
+    line-height: 0.72;
+    margin-right: 0.06em;
+    margin-top: 0.08em;
+    color: var(--acento);
+    font-style: italic;
+}
+
+/* ==========================================
+    PÁGINAS DE ILUSTRACIÓN (imágenes del PDF)
+   ========================================== */
+.pagina-imagen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.6rem 3.5rem;
+    gap: 0.4rem;
+    overflow: hidden;
+}
+
+.ilus-pagina {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.der-4 .ilus-pagina {
+    object-fit: contain;
+    object-position: center center;
+}
+
+.victoria-fondo {
+    background: linear-gradient(145deg, #14421a 0%, #2a8a34 100%);
+    padding: 0.5rem 0.5rem 2.8rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.victoria-fondo .ilus-pagina {
+    object-fit: contain;
+    object-position: center center;
+    background: transparent;
+    border-radius: 6px;
+    flex: 1;
+}
+
+.victoria-fondo .moraleja {
+    font-family: var(--fuente-t);
+    font-style: italic;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 30px;
+    padding: 6px 14px;
+    line-height: 1.6;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+    RETRATOS DE PERSONAJES (izq-1)
+   ========================================== */
+.retratos-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    height: 100%;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+}
+
+.retrato {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0.55rem 0.9rem;
+    border-radius: 10px;
+}
+
+.retrato-liebre {
+    background: linear-gradient(135deg, rgba(249, 132, 74, 0.15), rgba(249, 132, 74, 0.05));
+    border: 1.5px solid rgba(249, 132, 74, 0.3);
+}
+
+.retrato-tortu {
+    background: linear-gradient(135deg, rgba(102, 187, 106, 0.15), rgba(102, 187, 106, 0.05));
+    border: 1.5px solid rgba(102, 187, 106, 0.3);
+}
+
+.emoji-retrato {
+    font-size: 2.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.retrato-info {
+    text-align: left;
+}
+
+.retrato-nombre {
+    font-family: var(--fuente-t);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--texto);
+}
+
+.retrato-tag {
+    font-size: 0.68rem;
+    color: var(--texto-suave);
+    margin-top: 2px;
+}
+
+.choque-vs {
+    font-size: 1.4rem;
+    opacity: 0.5;
+}
+
+.estrellas-deco {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--acento);
+    opacity: 0.6;
+    margin-top: 0.3rem;
+}
+
+/* ==========================================
+    ESCENA DEL DESAFÍO (izq-2)
+   ========================================== */
+.escena-desafio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.8rem 1rem;
+    gap: 0.4rem;
+}
+
+.ambiente-bosque {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.amb-arbol {
+    font-size: 2.4rem;
+}
+
+.amb-sol {
+    font-size: 1.6rem;
+    animation: sol-lat 3s ease-in-out infinite alternate;
+}
+
+.dialogo-escena {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 100%;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.personaje-izq,
+.personaje-der {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.ei {
+    font-size: 3.2rem;
+}
+
+.suelo-bosque {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 1.2rem;
+    padding: 0.2rem 0;
+    opacity: 0.85;
+}
+
+.cap-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--acento);
+    opacity: 0.7;
+}
+
+/* ==========================================
+    ESCENA INICIO DE CARRERA (izq-3)
+   ========================================== */
+.escena-carrera-izq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    height: 100%;
+    padding: 1.4rem;
+    text-align: center;
+}
+
+.juez-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(192, 84, 26, 0.06);
+    border: 1px solid rgba(192, 84, 26, 0.15);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.juez-emoji {
+    font-size: 2.6rem;
+    animation: flotar 2s ease-in-out infinite alternate;
+}
+
+.b-juez {
+    border: 2px solid #d4840a;
+    color: #d4840a;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: bold;
+    background: rgba(212, 132, 10, 0.06);
+}
+
+.publico-label {
+    font-size: 0.68rem;
+    color: var(--texto-suave);
+    font-style: italic;
+}
+
+.publico-bosque {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    background: rgba(46, 125, 50, 0.07);
+    border: 1px solid rgba(46, 125, 50, 0.15);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.pub {
+    font-size: 2rem;
+}
+
+.izq-3 .pagina-imagen {
+    background: radial-gradient(circle at center, rgba(135, 206, 235, 0.15) 0%, transparent 60%);
+}
+
+.izq-3 .ilus-pagina {
+    border: 4px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+    ESCENA SIESTA COMPLETA (der-4)
+   ========================================== */
+.escena-siesta-completa {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 3.5rem);
+    gap: 0;
+    overflow: hidden;
+}
+
+.cielo-siesta {
+    background: linear-gradient(180deg, #87CEEB 0%, #b8e4f8 100%);
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.5rem 1.5rem;
+    position: relative;
+}
+
+.sol-siesta {
+    font-size: 2.2rem;
+    animation: sol-lat 3s ease-in-out infinite alternate;
+}
+
+.pajarito {
+    font-size: 1.6rem;
+}
+
+.mariposa {
+    font-size: 1.4rem;
+}
+
+.terreno-siesta {
+    background: linear-gradient(180deg, #8BC34A 0%, #558B2F 100%);
+    flex: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.arbol-grande {
+    font-size: 6rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 80, 0, 0.3));
+    line-height: 1;
+}
+
+.liebre-duerme {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.eg {
+    font-size: 3.8rem;
+}
+
+.zzz-grande {
+    font-size: 1.8rem;
+    position: absolute;
+    top: -22px;
+    right: -14px;
+    animation: parpadear-zzz 3s ease-in-out infinite;
+}
+
+.suelo-siesta {
+    background: #33691E;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4px 1rem;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+    ESCENA PASO A PASO COMPLETA (der-5)
+   ========================================== */
+.escena-paso-completa {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 3.5rem);
+    gap: 0;
+    overflow: hidden;
+}
+
+.fondo-paso {
+    background: linear-gradient(180deg, #90CAF9 0%, #BBDEFB 100%);
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0.3rem 1.5rem 0;
+}
+
+.arbol-lejano {
+    font-size: 2.5rem;
+    opacity: 0.7;
+}
+
+.nubes-paso {
+    font-size: 1.8rem;
+    animation: flotar 3s ease-in-out infinite alternate;
+}
+
+.meta-lejana {
+    font-size: 1.8rem;
+    opacity: 0.6;
+}
+
+.camino-paso {
+    background: linear-gradient(180deg, #A5D6A7 0%, #66BB6A 100%);
+    flex: 2.2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 0.5rem 1.5rem;
+    position: relative;
+}
+
+.liebre-dormida-ruta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.zzz-ruta {
+    position: absolute;
+    top: -18px;
+    right: -10px;
+    font-size: 1.3rem;
+    animation: parpadear-zzz 2.5s ease-in-out infinite;
+}
+
+.emoji-ruta {
+    font-size: 3.5rem;
+}
+
+.tortu-avanza {
+    font-size: 3.5rem;
+}
+
+.flores-ruta {
+    background: #2E7D32;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4px 1rem;
+    font-size: 1.1rem;
+}
+
+.pie-ilus {
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    text-align: center;
+    padding: 0.3rem 0 0;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================
+    TARJETAS DE PERSONAJES
+   ========================================== */
+.pagina-tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.tarjeta {
+    width: 200px;
+    height: 122px;
+    perspective: 900px;
+}
+
+.giro {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(.4, 0, .2, 1);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta:hover .giro {
+    transform: rotateY(180deg);
+}
+
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.9rem;
+    gap: 0.25rem;
+}
+
+.atras {
+    transform: rotateY(180deg);
+}
+
+.c-naranja {
+    background: linear-gradient(135deg, #f9844a, #e06020);
+}
+
+.c-naranja-c {
+    background: linear-gradient(135deg, #fde8c8, #ffcd8a);
+}
+
+.c-verde {
+    background: linear-gradient(135deg, #66BB6A, #2e8b32);
+}
+
+.c-verde-c {
+    background: linear-gradient(135deg, #c8f5c8, #a0e8a0);
+}
+
+.cara h3 {
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: var(--fuente-t);
+    font-style: italic;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cara p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.73rem;
+    line-height: 1.5;
+}
+
+.cara small {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.6rem;
+}
+
+.atras p {
+    color: var(--texto);
+}
+
+.ec {
+    font-size: 2.2rem;
+}
+
+/* ==========================================
+    CARRERA (s3 der)
+   ========================================== */
+.der-3 {
+    background: radial-gradient(circle at top, #1a4b77 0%, #0d1e36 100%);
+}
+
+.titulo-carrera {
+    font-family: var(--fuente-t);
+    font-size: 2.2rem;
+    color: #fff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.8rem;
+    animation: oscilar 3s ease-in-out infinite alternate;
+}
+
+.escenario-carrera {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(to bottom, #87CEEB 0%, #b8e4f8 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.cielo-carrera {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.cielo-carrera .nube-c {
+    animation: flotar 4s ease-in-out infinite alternate;
+}
+
+
+.pistas-bloque {
+    background: #689f38;
+    padding: 0.8rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-top: 2px solid #558b2f;
+    border-bottom: 2px solid #33691e;
+}
+
+.carril-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.nombre-carril {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-left: 0.4rem;
+}
+
+.marcadores-carrera {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.8rem;
+    background: #33691e;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.marcador {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.pista {
+    border-radius: 8px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pista-conejo {
+    background: linear-gradient(90deg, #1a5c1e, #2E7D32, #43A047, #66BB6A);
+}
+
+.pista-tortu {
+    background: linear-gradient(90deg, #1a5c1e, #2E7D32, #43A047, #66BB6A);
+}
+
+/* Línea de césped */
+.pista::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: rgba(0, 80, 0, 0.3);
+}
+
+.corredor {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: corre-conejo 10s ease-in-out infinite;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.caminante {
+    animation: camina-tortu 10s linear infinite;
+}
+
+.zzz {
+    font-size: 1.2rem;
+    position: absolute;
+    top: 3px;
+    left: 63%;
+    animation: parpadear-zzz 10s ease-in-out infinite;
+    z-index: 2;
+}
+
+.der-3 .btn-ant {
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================
+    SIESTA (s4 der) — fondo verde suave
+   ========================================== */
+.der-4 {
+    background: radial-gradient(ellipse at bottom, #d4f0d4 0%, #f0fdf4 60%);
+}
+
+.ilus-siesta {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    height: calc(100% - 4rem);
+    padding-bottom: 0.5rem;
+}
+
+.arbol {
+    font-size: 7.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 100, 0, 0.2));
+}
+
+.eg {
+    font-size: 3.8rem;
+}
+
+.liebre-duerme {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.zzz-grande {
+    font-size: 1.8rem;
+    position: absolute;
+    top: -24px;
+    right: -14px;
+    animation: parpadear-zzz 3s ease-in-out infinite;
+}
+
+/* ==========================================
+    PASO A PASO (s5 der) — fondo azul suave
+   ========================================== */
+.der-5 {
+    background: radial-gradient(ellipse at bottom, #cce4f8 0%, #ebf3fe 60%);
+}
+
+.ilus-paso {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.zzz-paso {
+    position: absolute;
+    top: -14px;
+    left: 8%;
+    font-size: 1.4rem;
+    animation: parpadear-zzz 2.5s ease-in-out infinite;
+}
+
+.pie-ilus {
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+    text-align: center;
+    margin-top: 0.6rem;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================
+    VICTORIA (s6)
+   ========================================== */
+.victoria-izq {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #14421a 0%, #1e6b26 50%, #2a8a34 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.5rem;
+}
+
+.ev {
+    font-size: 4.5rem;
+}
+
+.moraleja {
+    font-family: var(--fuente-t);
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    border-radius: 30px;
+    padding: 8px 16px;
+    line-height: 1.7;
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.07);
+    margin-top: 0.2rem;
+}
+
+.der-6 {
+    background: linear-gradient(145deg, #14421a 0%, #1e6b26 60%, #2a8a34 100%);
+}
+
+.der-6 .titulo-sec {
+    color: #d4f8d4;
+}
+
+.der-6 .titulo-sec::after {
+    background: rgba(255, 215, 0, 0.6);
+}
+
+.der-6 .pagina-texto p {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.der-6 .pagina-texto em {
+    color: #ffe066;
+}
+
+.der-6 .capital {
+    color: #ffe066;
+}
+
+.der-6 .btn-ant {
+    color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.25);
+}
