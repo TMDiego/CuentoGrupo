@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 :root {
     --papel: #FFFDF4;
     --papel-medio: #F5EDD8;
@@ -16,33 +17,40 @@
 }
 
 @theme {
-  --font-serif-title: "Playfair Display", serif;
-  --font-serif-text: "Lora", serif;
+    --font-serif-title: "Playfair Display", serif;
+    --font-serif-text: "Lora", serif;
 }
 
 @layer components {
-  /* Estructura general de las hojas (Tailwind) */
-  .hoja-cuento {
-    @apply w-full h-full text-amber-950 flex flex-col p-8 md:p-12 relative overflow-hidden;
-  }
-  .titulo-cuento {
-    @apply font-serif-title text-3xl md:text-4xl font-bold text-center text-amber-800 mb-6 drop-shadow-sm;
-  }
-  .texto-cuento {
-    @apply font-serif-text text-lg leading-relaxed text-justify mb-4 text-amber-900;
-  }
-  /* Utilidades para flip cards (3D) */
-  .flip-card {
-    @apply relative w-full h-full transition-transform duration-700;
-    transform-style: preserve-3d;
-  }
-  .flip-card-front, .flip-card-back {
-    @apply absolute w-full h-full flex flex-col items-center justify-center rounded-xl p-4 md:p-6;
-    backface-visibility: hidden;
-  }
-  .flip-card-back {
-    transform: rotateY(180deg);
-  }
+
+    /* Estructura general de las hojas (Tailwind) */
+    .hoja-cuento {
+        @apply w-full h-full text-amber-950 flex flex-col p-8 md:p-12 relative overflow-hidden;
+    }
+
+    .titulo-cuento {
+        @apply font-serif-title text-3xl md:text-4xl font-bold text-center text-amber-800 mb-6 drop-shadow-sm;
+    }
+
+    .texto-cuento {
+        @apply font-serif-text text-lg leading-relaxed text-justify mb-4 text-amber-900;
+    }
+
+    /* Utilidades para flip cards (3D) */
+    .flip-card {
+        @apply relative w-full h-full transition-transform duration-700;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        @apply absolute w-full h-full flex flex-col items-center justify-center rounded-xl p-4 md:p-6;
+        backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
 }
 
 /* ==========================================
@@ -188,7 +196,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2.2rem 2rem 4.5rem;
+    padding: 1rem 2rem 2rem;
     overflow-y: auto;
     overflow-x: hidden;
 
