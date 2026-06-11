@@ -70,8 +70,135 @@ body {
     background: #120604 url("../../imagenes/fondo.webp") center / cover no-repeat fixed;
 }
 
-.flip-checkbox {
+.flip-checkbox,
+.intro-checkbox {
     display: none;
+}
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    overflow: hidden;
+    text-align: center;
+    color: #fff8df;
+    background:
+        linear-gradient(180deg, rgba(18, 6, 4, 0.2) 0%, rgba(18, 6, 4, 0.58) 100%),
+        radial-gradient(circle at center, rgba(255, 220, 125, 0.2), transparent 42%);
+    transition:
+        opacity 0.85s ease,
+        transform 0.85s ease,
+        visibility 0.85s ease;
+}
+
+.intro-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 6, 4, 0.28);
+    backdrop-filter: blur(1px);
+}
+
+.intro-content {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 980px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(18px, 4vw, 34px);
+    animation: introEntrada 0.9s ease both;
+}
+
+.intro-kicker {
+    margin: 0;
+    font-size: clamp(0.82rem, 1.5vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #ffe9a8;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.46);
+}
+
+.intro-content h1 {
+    margin: 0;
+    font-family: var(--fuente-t);
+    font-size: clamp(3rem, 9vw, 7.4rem);
+    font-style: italic;
+    line-height: 0.95;
+    color: #fffdf4;
+    text-shadow:
+        0 6px 0 rgba(72, 31, 7, 0.42),
+        0 14px 34px rgba(0, 0, 0, 0.72);
+}
+
+.intro-characters {
+    width: min(100%, 980px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 5vw, 70px);
+    min-height: clamp(160px, 27vw, 260px);
+}
+
+.intro-character {
+    filter: drop-shadow(0 18px 14px rgba(0, 0, 0, 0.38));
+}
+
+.intro-rabbit {
+    animation: flotarIntro 2.8s ease-in-out infinite alternate;
+}
+
+.intro-turtle {
+    animation: flotarIntro 3.2s ease-in-out 0.35s infinite alternate;
+}
+
+.intro-vs {
+    align-self: center;
+    font-family: var(--fuente-t);
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #ffe9a8;
+    text-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
+}
+
+.intro-button {
+    position: fixed;
+    right: clamp(18px, 4vw, 46px);
+    bottom: clamp(18px, 4vw, 42px);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-height: 54px;
+    padding: 0 34px;
+    border: 2px solid rgba(255, 248, 223, 0.82);
+    border-radius: 999px;
+    background: rgba(18, 6, 4, 0.16);
+    color: #fff8df;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.28),
+        inset 0 0 18px rgba(255, 248, 223, 0.08);
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.intro-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 248, 223, 0.18);
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, 0.42),
+        inset 0 0 24px rgba(255, 248, 223, 0.14);
 }
 
 .main-container {
@@ -81,6 +208,28 @@ body {
     justify-content: center;
     align-items: center;
     padding: 22px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(28px) scale(0.96);
+    transition:
+        opacity 0.8s ease 0.25s,
+        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.25s,
+        visibility 0.8s ease 0.25s;
+}
+
+.intro-checkbox:checked ~ .intro-screen {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(1.04);
+}
+
+.intro-checkbox:checked ~ .main-container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
 }
 
 .book-container {
@@ -549,6 +698,100 @@ body {
     background: #fff8df;
 }
 
+.opening-scene {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: clamp(18px, 4vw, 34px);
+    background:
+        linear-gradient(180deg, rgba(92, 185, 225, 0.86) 0%, rgba(150, 221, 244, 0.82) 48%, rgba(94, 160, 67, 0.82) 49%, rgba(45, 112, 43, 0.9) 100%),
+        linear-gradient(to right, rgba(232, 216, 184, 0.9), rgba(255, 253, 244, 0.4));
+}
+
+.cover-page .opening-sky,
+.opening-scene .opening-sky {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.opening-sun {
+    position: absolute;
+    top: 12%;
+    right: 13%;
+    width: clamp(48px, 7vw, 76px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff4a3 0%, #ffd85c 58%, #f59f1b 100%);
+    box-shadow: 0 0 36px rgba(250, 204, 21, 0.65);
+}
+
+.opening-cloud {
+    position: absolute;
+    width: 54px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow:
+        16px -10px 0 3px rgba(255, 255, 255, 0.7),
+        34px -2px 0 1px rgba(255, 255, 255, 0.62);
+    animation: nubeSuave 5s ease-in-out infinite alternate;
+}
+
+.cloud-left {
+    top: 15%;
+    left: 12%;
+}
+
+.cloud-right {
+    top: 22%;
+    right: 22%;
+    transform: scale(0.86);
+    animation-delay: 0.7s;
+}
+
+.opening-track {
+    position: relative;
+    z-index: 5;
+    width: min(100%, 330px);
+    height: clamp(112px, 21vw, 150px);
+    margin: auto 0 10px;
+    border-bottom: 8px solid rgba(54, 87, 28, 0.55);
+}
+
+.opening-track::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -11px;
+    left: 0;
+    height: 5px;
+    border-radius: 999px;
+    background: repeating-linear-gradient(to right, rgba(255, 248, 223, 0.9) 0 18px, transparent 18px 30px);
+}
+
+.cover-opening-track {
+    width: min(100%, 280px);
+    height: 92px;
+    margin: -6px 0 2px;
+}
+
+.opening-runner {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+}
+
+.opening-rabbit {
+    animation: liebreSaltando 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.opening-turtle {
+    animation: tortugaCaminando 6.5s linear infinite;
+}
+
 .characters-intro,
 .character-cards {
     width: min(100%, 340px);
@@ -948,6 +1191,88 @@ body {
     }
 }
 
+@keyframes introEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes flotarIntro {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes liebreSaltando {
+    0% {
+        left: 0;
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    18% {
+        transform: translateY(-34px) rotate(6deg);
+    }
+
+    34% {
+        left: 38%;
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    52% {
+        transform: translateY(-28px) rotate(5deg);
+    }
+
+    68% {
+        left: 70%;
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    82% {
+        transform: translateY(-18px) rotate(4deg);
+    }
+
+    100% {
+        left: 0;
+        transform: translateY(0) rotate(-4deg);
+    }
+}
+
+@keyframes tortugaCaminando {
+    0% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    48% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        left: 74%;
+        transform: translateX(0);
+    }
+}
+
+@keyframes nubeSuave {
+    from {
+        translate: 0 0;
+    }
+
+    to {
+        translate: 16px 4px;
+    }
+}
+
 @media (max-width: 720px) {
     :root {
         --book-w: min(96vw, 430px);
@@ -962,6 +1287,28 @@ body {
     .main-container {
         min-height: 100svh;
         padding: 12px;
+    }
+
+    .intro-screen {
+        padding: 18px;
+    }
+
+    .intro-characters {
+        flex-wrap: wrap;
+        gap: 16px 22px;
+        min-height: 210px;
+    }
+
+    .intro-button {
+        width: min(100%, 280px);
+    }
+
+    .pixel-hero {
+        --pixel: clamp(5px, 2vw, 7px);
+    }
+
+    .opening-track {
+        height: 96px;
     }
 
     .book {
@@ -1775,4 +2122,90 @@ body {
         calc(9 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--outline),
         calc(10 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--outline),
         calc(11 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--outline);
+}
+
+.tortuga-pixel {
+  --pixel: 10px;
+
+  --outline: #202020;
+  --shell: #ae6f26;
+  --shell-dark: #5f3b1d;
+  --shell-light: #dda95a;
+  --skin: #7bde36;
+  --skin-dark: #308726;
+
+  width: 24em;
+  height: 16em;
+  font-size: var(--pixel);
+  background:
+    linear-gradient(90deg, transparent 0em 7em, var(--outline) 7em 13em, transparent 13em 16em, var(--outline) 16em 21em, var(--shell-dark) 21em 22em, transparent 22em 24em) 0 0em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 5em, var(--outline) 5em 7em, var(--shell) 7em 13em, var(--outline) 13em 16em, var(--skin) 16em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 1em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 4em, var(--outline) 4em 5em, var(--shell-dark) 5em 6em, var(--shell) 6em 13em, var(--shell-light) 13em 14em, var(--shell-dark) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 2em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 3em, var(--outline) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 22em, var(--skin-dark) 22em 23em, var(--shell-dark) 23em 24em) 0 3em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 4em, var(--shell) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 13em, var(--shell-dark) 13em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 23em, var(--outline) 23em 24em) 0 4em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell) 2em 5em, var(--shell-dark) 5em 7em, var(--shell) 7em 12em, var(--shell-dark) 12em 13em, var(--outline) 13em 14em, var(--skin) 14em 17em, var(--outline) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--skin) 22em 23em, var(--outline) 23em 24em) 0 5em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell-light) 2em 3em, var(--shell) 3em 6em, var(--shell-dark) 6em 8em, var(--outline) 8em 13em, var(--shell-dark) 13em 14em, var(--skin) 14em 23em, var(--outline) 23em 24em) 0 6em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--outline) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 19em, var(--outline) 19em 20em, var(--skin-dark) 20em 21em, var(--skin) 21em 22em, var(--skin-dark) 22em 23em, transparent 23em 24em) 0 7em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--shell-dark) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 8em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 3em, var(--shell) 3em 4em, var(--shell-dark) 4em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 20em, var(--skin-dark) 20em 21em, var(--outline) 21em 22em, transparent 22em 24em) 0 9em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 4em, var(--outline) 4em 5em, var(--shell-light) 5em 6em, var(--shell) 6em 13em, var(--outline) 13em 14em, var(--shell-dark) 14em 15em, var(--skin) 15em 18em, var(--skin-dark) 18em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 10em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 2em, var(--outline) 2em 5em, var(--shell-dark) 5em 12em, var(--outline) 12em 15em, var(--skin-dark) 15em 18em, var(--outline) 18em 20em, transparent 20em 24em) 0 11em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 5em, var(--outline) 5em 17em, var(--skin-dark) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 12em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 12em, var(--skin) 12em 13em, var(--skin-dark) 13em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 13em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, transparent 6em 11em, var(--outline) 11em 12em, var(--skin) 12em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 14em / 24em 1em no-repeat,
+
+    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 3em, var(--outline) 3em 5em, transparent 5em 12em, var(--outline) 12em 14em, transparent 14em 17em, var(--outline) 17em 19em, transparent 19em 24em) 0 15em / 24em 1em no-repeat;
+}
+
+.conejo-pixel,
+.tortuga-pixel,
+.zanahoria-pixel,
+.zorro-pixel {
+    display: inline-block;
+    flex: 0 0 auto;
+    image-rendering: pixelated;
+    vertical-align: middle;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
+}
+
+.pixel-xxs {
+    --pixel: 2px;
+}
+
+.pixel-xs {
+    --pixel: 4px;
+}
+
+.pixel-sm {
+    --pixel: clamp(4px, 0.72vw, 6px);
+}
+
+.pixel-lg {
+    --pixel: clamp(6px, 1vw, 9px);
+}
+
+.pixel-hero {
+    --pixel: clamp(7px, 1.25vw, 12px);
+}
+
+.corredor.conejo-pixel,
+.corredor.tortuga-pixel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
 }
