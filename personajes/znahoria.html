@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zanahoria-pixel {
+  --pixel: 10px; /* cambia este valor para hacerla más grande o pequeña */
+  --outline: #1f1f1f;
+  --leaf: #08af17;
+  --leaf-dark: #087912;
+  --carrot: #ff7f24;
+  --carrot-shadow: #d75d00;
+
+  position: relative;
+  width: calc(12 * var(--pixel));
+  height: calc(28 * var(--pixel));
+}
+
+.zanahoria-pixel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--pixel);
+  height: var(--pixel);
+  background: transparent;
+  box-shadow:
+    calc(6 * var(--pixel)) calc(0 * var(--pixel)) 0 var(--outline),
+
+    calc(5 * var(--pixel)) calc(1 * var(--pixel)) 0 var(--outline),
+    calc(6 * var(--pixel)) calc(1 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(1 * var(--pixel)) 0 var(--outline),
+
+    calc(4 * var(--pixel)) calc(2 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(2 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(2 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(2 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(3 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(3 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(3 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(3 * var(--pixel)) 0 var(--leaf-dark),
+    calc(7 * var(--pixel)) calc(3 * var(--pixel)) 0 var(--outline),
+
+    calc(0 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--outline),
+    calc(1 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--leaf),
+    calc(2 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--leaf-dark),
+    calc(7 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--leaf-dark),
+    calc(8 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--outline),
+    calc(10 * var(--pixel)) calc(4 * var(--pixel)) 0 var(--outline),
+
+    calc(0 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+    calc(1 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf),
+    calc(2 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf),
+    calc(3 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf-dark),
+    calc(8 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+    calc(9 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+    calc(10 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--leaf),
+    calc(11 * var(--pixel)) calc(5 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(3 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(4 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf-dark),
+    calc(8 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--outline),
+    calc(9 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(10 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--leaf),
+    calc(11 * var(--pixel)) calc(6 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf-dark),
+    calc(3 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf),
+    calc(4 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--outline),
+    calc(8 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf),
+    calc(9 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf),
+    calc(10 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--leaf-dark),
+    calc(11 * var(--pixel)) calc(7 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf),
+    calc(4 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf),
+    calc(5 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--outline),
+    calc(8 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf),
+    calc(9 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--leaf-dark),
+    calc(10 * var(--pixel)) calc(8 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf-dark),
+    calc(4 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf-dark),
+    calc(5 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf),
+    calc(6 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf),
+    calc(7 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf-dark),
+    calc(8 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--leaf-dark),
+    calc(9 * var(--pixel)) calc(9 * var(--pixel)) 0 var(--outline),
+
+    calc(3 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--leaf-dark),
+    calc(5 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--leaf-dark),
+    calc(6 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--leaf-dark),
+    calc(7 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--leaf-dark),
+    calc(8 * var(--pixel)) calc(10 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+    calc(6 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+    calc(7 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+    calc(8 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(11 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(3 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--carrot),
+    calc(10 * var(--pixel)) calc(12 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(9 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(13 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(14 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(4 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(15 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(8 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(9 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(16 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(17 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(4 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(5 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(18 * var(--pixel)) 0 var(--outline),
+
+    calc(1 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--outline),
+    calc(2 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(3 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(4 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot),
+    calc(9 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(10 * var(--pixel)) calc(19 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(4 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(8 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(9 * var(--pixel)) calc(20 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(4 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot),
+    calc(5 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot),
+    calc(8 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(9 * var(--pixel)) calc(21 * var(--pixel)) 0 var(--outline),
+
+    calc(2 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--outline),
+    calc(3 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(4 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(5 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(8 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(9 * var(--pixel)) calc(22 * var(--pixel)) 0 var(--outline),
+
+    calc(3 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(5 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(8 * var(--pixel)) calc(23 * var(--pixel)) 0 var(--outline),
+
+    calc(3 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--outline),
+    calc(4 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(5 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--carrot),
+    calc(6 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--carrot),
+    calc(7 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(8 * var(--pixel)) calc(24 * var(--pixel)) 0 var(--outline),
+
+    calc(4 * var(--pixel)) calc(25 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(25 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(6 * var(--pixel)) calc(25 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(7 * var(--pixel)) calc(25 * var(--pixel)) 0 var(--outline),
+
+    calc(4 * var(--pixel)) calc(26 * var(--pixel)) 0 var(--outline),
+    calc(5 * var(--pixel)) calc(26 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(6 * var(--pixel)) calc(26 * var(--pixel)) 0 var(--carrot-shadow),
+    calc(7 * var(--pixel)) calc(26 * var(--pixel)) 0 var(--outline),
+
+    calc(5 * var(--pixel)) calc(27 * var(--pixel)) 0 var(--outline),
+    calc(6 * var(--pixel)) calc(27 * var(--pixel)) 0 var(--outline);
+}
+    </style>
+</head>
+<body>
+    <div class="zanahoria-pixel"></div>
+</body>
+</html>
