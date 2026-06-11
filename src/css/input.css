@@ -60,10 +60,7 @@ body {
     overflow: hidden;
     font-family: var(--fuente-p);
     color: var(--tinta);
-    background:
-        radial-gradient(ellipse at 28% 48%, rgba(95, 43, 16, 0.64) 0%, transparent 54%),
-        radial-gradient(ellipse at 72% 52%, rgba(36, 12, 5, 0.58) 0%, transparent 56%),
-        linear-gradient(160deg, #331507 0%, #120604 52%, #291107 100%);
+    background: #120604 url("../../imagenes/fondo.webp") center / cover no-repeat fixed;
 }
 
 .flip-checkbox {
