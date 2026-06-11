@@ -3,8 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Liebre y la Tortuga</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
     rel="stylesheet">
@@ -12,87 +14,127 @@
 </head>
 
 <body>
+  <input type="checkbox" id="flip-checkbox-1" class="flip-checkbox">
+  <input type="checkbox" id="flip-checkbox-2" class="flip-checkbox">
+  <input type="checkbox" id="flip-checkbox-3" class="flip-checkbox">
+  <input type="checkbox" id="flip-checkbox-4" class="flip-checkbox">
+  <input type="checkbox" id="flip-checkbox-5" class="flip-checkbox">
+  <input type="checkbox" id="flip-checkbox-6" class="flip-checkbox">
 
-  <input type="radio" name="spread" id="s0" class="ctrl" checked>
-  <input type="radio" name="spread" id="s1" class="ctrl">
-  <input type="radio" name="spread" id="s2" class="ctrl">
-  <input type="radio" name="spread" id="s3" class="ctrl">
-  <input type="radio" name="spread" id="s4" class="ctrl">
-  <input type="radio" name="spread" id="s5" class="ctrl">
-  <input type="radio" name="spread" id="s6" class="ctrl">
+  <main class="main-container">
+    <div class="book-container">
+      <div class="book">
+        <span class="cover cover-left" aria-hidden="true"></span>
 
-  <div class="escritorio">
-    <div class="libro">
+        <section class="page page-static-left">
+          <div class="page-content-left page-shell page-endpaper">
+            <p class="cap-label">Fabula de Esopo</p>
+            <h2 class="titulo-sec">La Liebre y la Tortuga</h2>
+            <p>Un cuento sobre el orgullo, la paciencia y el valor de avanzar sin rendirse.</p>
+          </div>
+        </section>
 
-      <div class="pila"></div>
-
-      <div class="hoja hoja-izq">
-
-        <div class="pag izq-1">
-          <div class="hoja-cuento relative items-center justify-center">
-            <div class="w-full max-w-sm flex flex-col gap-8">
-              <p class="titulo-cuento">❧ Los Personajes ❧</p>
-
-              <div
-                class="flex items-center justify-between bg-white/50 p-4 rounded-xl shadow-md border border-amber-200">
-                <span class="text-6xl drop-shadow-md">🐇</span>
-                <div class="text-right">
-                  <p class="font-serif-title text-2xl font-bold text-amber-700">La Liebre</p>
-                  <p class="font-serif-text text-amber-600 text-sm">⚡ Veloz &nbsp;·&nbsp; 😤 Presumida</p>
-                </div>
-              </div>
-
-              <div class="text-center text-3xl text-amber-400 font-bold my-2">⚔️</div>
-
-              <div
-                class="flex items-center justify-between bg-white/50 p-4 rounded-xl shadow-md border border-emerald-200">
-                <div class="text-left">
-                  <p class="font-serif-title text-2xl font-bold text-emerald-700">La Tortuga</p>
-                  <p class="font-serif-text text-emerald-600 text-sm">🎯 Constante &nbsp;·&nbsp; 🧘 Paciente</p>
-                </div>
-                <span class="text-6xl drop-shadow-md">🐢</span>
-              </div>
-
-              <div class="text-center text-amber-400 tracking-[0.5em] text-xl mt-4">⭐ ⭐ ⭐</div>
+        <section class="page page-static-right">
+          <div class="page-content-right page-shell">
+            <div class="pagina-texto">
+              <h2 class="titulo-sec">La Victoria</h2>
+              <p><span class="capital">C</span>uando la liebre despertó, ya era demasiado tarde. La tortuga cruzó la
+                meta entre los aplausos de todos los animales del bosque.</p>
+              <p>La liebre corrió con toda su fuerza, pero no pudo alcanzarla. <em>La tortuga había ganado.</em></p>
+              <p>Avergonzada, la liebre comprendió: <em>"La constancia vence al orgullo."</em></p>
             </div>
+            <button class="restart-button" type="button" onclick="window.location.reload()">Inicio</button>
+          </div>
+        </section>
 
-            <label for="s0"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">
-              &#9664;
+        <section class="page turn page-auto-turn page-paper-1" aria-hidden="true"></section>
+        <section class="page turn page-auto-turn page-paper-2" aria-hidden="true"></section>
+        <section class="page turn page-auto-turn page-paper-3" aria-hidden="true"></section>
+        <section class="page turn page-auto-turn page-paper-4" aria-hidden="true"></section>
+
+        <section class="page turn" id="page-flip-6">
+          <div class="page-content-right page-face-front page-shell">
+            <div class="pagina-imagen">
+              <img src="imagenes/tarj_meta.png" alt="La tortuga cruza la meta mientras la liebre despierta"
+                class="ilus-pagina">
+              <p class="pie-ilus">La tortuga cruza la meta.</p>
+            </div>
+            <label for="flip-checkbox-6" class="page-corner" aria-label="Pasar pagina 6">
+              <span class="arrow-red">➜</span>
             </label>
           </div>
-        </div>
 
-        <div class="pag izq-2">
-          <div class="hoja-cuento relative items-center justify-center">
-            <div class="pagina-imagen">
-              <img src="imagenes/tarj_desafio.png" alt="La tortuga y la liebre se encuentran en el bosque"
+          <div class="page-content-left page-face-back page-shell">
+            <div class="pagina-imagen victoria-fondo">
+              <img src="imagenes/victoria_grande.png" alt="La tortuga gana la carrera, liebre y zorro la felicitan"
                 class="ilus-pagina">
-              <p class="cap-label">— Capítulo I —</p>
+              <p class="moraleja">Lento pero constante gana la carrera</p>
             </div>
-
-            <label for="s1"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">&#9664;</label>
+            <label for="flip-checkbox-6" class="page-corner back-corner" aria-label="Regresar pagina 6"></label>
           </div>
-        </div>
+        </section>
 
-        <div class="pag izq-3">
-          <div class="hoja-cuento relative items-center justify-center ">
+        <section class="page turn" id="page-flip-5">
+          <div class="page-content-right page-face-front page-shell">
             <div class="pagina-imagen">
-              <img src="imagenes/tarj_carrera.png" alt="El zorro Agapito da la salida de la carrera"
+              <img src="imagenes/tarj_siesta.png" alt="La liebre duerme bajo el arbol mientras la tortuga avanza"
                 class="ilus-pagina">
-              <p class="cap-label">— Capítulo II —</p>
             </div>
-
-            <label for="s2"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">&#9664;</label>
+            <label for="flip-checkbox-5" class="page-corner" aria-label="Pasar pagina 5">
+              <span class="arrow-red">➜</span>
+            </label>
           </div>
-        </div>
 
-        <div class="pag izq-4">
-          <div class="hoja-cuento relative items-center justify-center ">
+          <div class="page-content-left page-face-back page-shell">
             <div class="pagina-texto">
-              <p class="cap-label">— Capítulo III —</p>
+              <p class="cap-label">Capitulo IV</p>
+              <h3 class="titulo-cap">Paso a Paso</h3>
+              <div class="linea-deco"></div>
+              <p>Mientras la liebre roncaba, la tortuga siguió su camino sin descanso alguno.</p>
+              <p>Un paso, y otro, y otro más. Sin prisa pero sin pausa.</p>
+              <p>Con determinación, pasó junto a la liebre dormida y siguió adelante, <em>sin mirar atrás</em>.</p>
+            </div>
+            <label for="flip-checkbox-5" class="page-corner back-corner" aria-label="Regresar pagina 5"></label>
+          </div>
+        </section>
+
+        <section class="page turn" id="page-flip-4">
+          <div class="page-content-right page-face-front page-shell race-page">
+            <h2 class="titulo-carrera">A correr</h2>
+            <div class="escenario-carrera">
+              <div class="cielo-carrera">
+                <span class="nube-c">☁</span>
+                <span class="sol-c">☀</span>
+                <span class="nube-c">☁</span>
+              </div>
+              <div class="pistas-bloque">
+                <div class="carril-wrap">
+                  <span class="nombre-carril">Liebre</span>
+                  <div class="pista pista-conejo">
+                    <span class="zzz">Zzz</span>
+                    <span class="corredor">🐇</span>
+                  </div>
+                </div>
+                <div class="carril-wrap">
+                  <span class="nombre-carril">Tortuga</span>
+                  <div class="pista pista-tortu">
+                    <span class="corredor caminante">🐢</span>
+                  </div>
+                </div>
+              </div>
+              <div class="marcadores-carrera">
+                <span class="marcador">Salida</span>
+                <span class="marcador">Meta</span>
+              </div>
+            </div>
+            <label for="flip-checkbox-4" class="page-corner" aria-label="Pasar pagina 4">
+              <span class="arrow-red">➜</span>
+            </label>
+          </div>
+
+          <div class="page-content-left page-face-back page-shell">
+            <div class="pagina-texto">
+              <p class="cap-label">Capitulo III</p>
               <h3 class="titulo-cap">La Siesta Fatal</h3>
               <div class="linea-deco"></div>
               <p>La liebre corrió tan rápido que pronto dejó a la tortuga muy atrás.</p>
@@ -100,88 +142,37 @@
               <p><em>"Tengo tiempo de sobra"</em>, pensó. <em>"Esa tortuga jamás podrá alcanzarme."</em></p>
               <p>Y así, entre la brisa, la liebre cerró los ojos y se quedó profundamente dormida.</p>
             </div>
-
-            <label for="s3"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">&#9664;</label>
+            <label for="flip-checkbox-4" class="page-corner back-corner" aria-label="Regresar pagina 4"></label>
           </div>
-        </div>
+        </section>
 
-        <div class="pag izq-5">
-          <div class="hoja-cuento relative items-center justify-center ">
+        <section class="page turn" id="page-flip-3">
+          <div class="page-content-right page-face-front page-shell">
             <div class="pagina-texto">
-              <p class="cap-label">— Capítulo IV —</p>
-              <h3 class="titulo-cap">Paso a Paso</h3>
-              <div class="linea-deco"></div>
-              <p>Mientras la liebre roncaba, la tortuga siguió su camino sin descanso alguno.</p>
-              <p>Un paso, y otro, y otro más. Sin prisa pero sin pausa.</p>
-              <p>Con determinación, pasó junto a la liebre dormida y siguió adelante, <em>sin mirar atrás</em>.</p>
+              <h2 class="titulo-sec">El Desafio</h2>
+              <p><span class="capital">E</span>n un soleado día, la orgullosa liebre se cruzó con la tortuga y empezó a
+                reírse de ella.</p>
+              <p><em>"¿Para qué caminas si nunca llegarás a ningún lado?"</em>, le dijo entre carcajadas.</p>
+              <p>La tortuga respondió con calma: <em>"Te reto a una carrera. Veremos quién llega primero."</em></p>
+              <p>La liebre, confiada, aceptó sin pensarlo dos veces.</p>
             </div>
-
-            <label for="s4"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">&#9664;</label>
-          </div>
-        </div>
-
-        <div class="pag izq-6">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <div class="pagina-imagen victoria-fondo">
-              <img src="imagenes/victoria_grande.png" alt="La tortuga gana la carrera, liebre y zorro la felicitan"
-                class="ilus-pagina">
-              <p class="moraleja">✦ Lento pero constante gana la carrera ✦</p>
-            </div>
-
-            <label for="s5"
-              class="absolute bottom-2 left-1 flecha-libro cursor-pointer text-amber-600 hover:text-amber-800 hover:scale-110 transition-transform font-bold text-2xl bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center w-12 h-12 rounded-full">&#9664;</label>
-          </div>
-        </div>
-
-      </div>
-      <div class="espina"></div>
-
-      <div class="hoja hoja-der">
-
-        <div class="pag der-0">
-          <div
-            class="relative w-full h-full bg-gradient-to-b from-sky-400 via-blue-500 to-green-600 flex flex-col items-center justify-center overflow-hidden gap-4 p-8">
-
-            <div class="absolute inset-4 border-4 border-amber-300/60 pointer-events-none z-10"></div>
-            <div class="absolute inset-5 border-2 border-amber-200/30 pointer-events-none z-10"></div>
-
-            <div
-              class="absolute top-8 right-8 w-20 h-20 bg-gradient-to-tr from-yellow-400 to-yellow-200 rounded-full shadow-[0_0_40px_rgba(250,204,21,0.6)] animate-pulse z-0">
-            </div>
-            <div
-              class="absolute top-12 left-10 text-white/80 text-6xl animate-[bounce_10s_infinite_alternate] opacity-50 z-0">
-              ☁️</div>
-            <div
-              class="absolute top-24 right-20 text-white/80 text-5xl animate-[bounce_8s_infinite_alternate-reverse] opacity-50 z-0">
-              ☁️</div>
-
-            <p class="text-white/90 uppercase tracking-[0.3em] text-xs font-semibold z-20 mt-12 drop-shadow-md">Una
-              Fábula de Esopo</p>
-            <h1
-              class="font-serif-title text-5xl md:text-6xl text-white text-center font-bold italic leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] z-20">
-              La Liebre<br>y la Tortuga
-            </h1>
-
-            <div class="flex items-center gap-6 text-4xl z-20 my-4">
-              <span class="animate-bounce">🐇</span>
-              <span class="text-white/80 font-bold text-xl italic">vs</span>
-              <span class="animate-bounce [animation-delay:150ms]">🐢</span>
-            </div>
-
-            <label for="s1"
-              class="cursor-pointer bg-white text-blue-900 font-bold py-3 px-8 rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.3)] hover:scale-105 hover:bg-amber-50 transition-all z-20 mt-4 border-2 border-transparent hover:border-amber-400 active:scale-95">
-              📖 ¡Toca aquí para leer!
+            <label for="flip-checkbox-3" class="page-corner" aria-label="Pasar pagina 3">
+              <span class="arrow-red">➜</span>
             </label>
-            <p class="text-white/70 text-sm italic z-20 animate-pulse mt-2">👆 toca para pasar las hojas</p>
           </div>
-        </div>
 
-        <div class="pag der-1">
-          <div class="hoja-cuento relative justify-between items-center">
-            <div class="flex-1 flex flex-col gap-6 justify-center max-w-sm mx-auto w-full">
+          <div class="page-content-left page-face-back page-shell">
+            <div class="pagina-imagen">
+              <img src="imagenes/tarj_carrera.png" alt="El zorro da la salida de la carrera" class="ilus-pagina">
+              <p class="cap-label">Capitulo II</p>
+            </div>
+            <label for="flip-checkbox-3" class="page-corner back-corner" aria-label="Regresar pagina 3"></label>
+          </div>
+        </section>
 
+        <section class="page turn" id="page-flip-2">
+          <div class="page-content-right page-face-front page-shell">
+            <div class="character-cards">
               <div class="group h-48 w-full [perspective:1000px]">
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
                   <div
@@ -189,14 +180,13 @@
                     <span class="text-5xl mb-2 drop-shadow-md">🐇</span>
                     <h3 class="font-serif-title text-2xl font-bold text-amber-800">La Liebre</h3>
                     <p class="font-serif-text text-amber-700 mt-1">Veloz y presumida</p>
-                    <small class="text-amber-500 mt-3 font-semibold text-xs uppercase tracking-wider animate-pulse">Pasa
-                      el cursor ↻</small>
+                    <small class="text-amber-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el cursor</small>
                   </div>
                   <div
                     class="flip-card-back bg-gradient-to-br from-amber-700 to-amber-900 shadow-lg border border-amber-950 text-amber-50">
                     <span class="text-4xl mb-3 opacity-80">🐇</span>
-                    <p class="font-serif-text text-center text-sm md:text-base leading-relaxed">Era la más rápida del
-                      bosque. Siempre ganaba y se burlaba de todos.</p>
+                    <p class="font-serif-text text-center text-sm leading-relaxed">Era la más rápida del bosque. Siempre
+                      ganaba y se burlaba de todos.</p>
                   </div>
                 </div>
               </div>
@@ -208,128 +198,81 @@
                     <span class="text-5xl mb-2 drop-shadow-md">🐢</span>
                     <h3 class="font-serif-title text-2xl font-bold text-emerald-800">La Tortuga</h3>
                     <p class="font-serif-text text-emerald-700 mt-1">Lenta pero constante</p>
-                    <small
-                      class="text-emerald-500 mt-3 font-semibold text-xs uppercase tracking-wider animate-pulse">Pasa el
-                      cursor ↻</small>
+                    <small class="text-emerald-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el cursor</small>
                   </div>
                   <div
                     class="flip-card-back bg-gradient-to-br from-emerald-700 to-emerald-900 shadow-lg border border-emerald-950 text-emerald-50">
                     <span class="text-4xl mb-3 opacity-80">🐢</span>
-                    <p class="font-serif-text text-center text-sm md:text-base leading-relaxed">Era tranquila y
-                      perseverante. Nunca se rendía, avanzaba paso a paso.</p>
+                    <p class="font-serif-text text-center text-sm leading-relaxed">Era tranquila y perseverante. Nunca se
+                      rendía, avanzaba paso a paso.</p>
                   </div>
                 </div>
               </div>
-
             </div>
-
-            <label for="s2"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-amber-600 hover:bg-amber-700 hover:scale-110 transition-transform font-bold text-2xl border-2 border-amber-800 shadow-md flex items-center justify-center w-12 h-12 rounded-full animate-pulse">&#9654;</label>
-          </div>
-        </div>
-
-        <div class="pag der-2">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <div class="pagina-texto">
-              <h2 class="titulo-sec">El Desafío</h2>
-              <p><span class="capital">E</span>n un soleado día, la orgullosa liebre se cruzó con la tortuga y empezó a
-                reírse de ella.</p>
-              <p><em>"¿Para qué caminas si nunca llegarás a ningún lado?"</em>, le dijo entre carcajadas.</p>
-              <p>La tortuga respondió con calma: <em>"Te reto a una carrera. Veremos quién llega primero."</em></p>
-              <p>La liebre, confiada, aceptó sin pensarlo dos veces.</p>
-            </div>
-
-            <label for="s3"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-amber-600 hover:bg-amber-700 hover:scale-110 transition-transform font-bold text-2xl border-2 border-amber-800 shadow-md flex items-center justify-center w-12 h-12 rounded-full animate-pulse">&#9654;</label>
-          </div>
-        </div>
-
-        <div class="pag der-3">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <h2 class="titulo-carrera">¡A correr!</h2>
-            <div class="escenario-carrera">
-              <div class="cielo-carrera">
-                <span class="nube-c">☁️</span>
-                <span class="sol-c">☀️</span>
-                <span class="nube-c">☁️</span>
-              </div>
-              <div class="pistas-bloque">
-                <div class="carril-wrap">
-                  <span class="nombre-carril">🐇 Liebre</span>
-                  <div class="pista pista-conejo">
-                    <span class="zzz">💤</span>
-                    <span class="corredor">🐇</span>
-                  </div>
-                </div>
-                <div class="carril-wrap">
-                  <span class="nombre-carril">🐢 Tortuga</span>
-                  <div class="pista pista-tortu">
-                    <span class="corredor caminante">🐢</span>
-                  </div>
-                </div>
-              </div>
-              <div class="marcadores-carrera">
-                <span class="marcador">🚩 Salida</span>
-                <span class="marcador">🏁 Meta</span>
-              </div>
-            </div>
-
-            <label for="s4"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-amber-600 hover:bg-amber-700 hover:scale-110 transition-transform font-bold text-2xl border-2 border-amber-800 shadow-md flex items-center justify-center w-12 h-12 rounded-full animate-pulse">&#9654;</label>
-          </div>
-        </div>
-
-        <div class="pag der-4">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <div class="pagina-imagen">
-              <img src="imagenes/tarj_siesta.png" alt="La liebre duerme bajo el árbol mientras la tortuga avanza"
-                class="ilus-pagina">
-            </div>
-
-            <label for="s5"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-amber-600 hover:bg-amber-700 hover:scale-110 transition-transform font-bold text-2xl border-2 border-amber-800 shadow-md flex items-center justify-center w-12 h-12 rounded-full animate-pulse">&#9654;</label>
-          </div>
-        </div>
-
-        <div class="pag der-5">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <div class="pagina-imagen">
-              <img src="imagenes/tarj_meta.png" alt="La tortuga cruza la meta mientras la liebre despierta"
-                class="ilus-pagina">
-              <p class="pie-ilus">¡La tortuga cruza la meta!</p>
-            </div>
-
-            <label for="s6"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-amber-600 hover:bg-amber-700 hover:scale-110 transition-transform font-bold text-2xl border-2 border-amber-800 shadow-md flex items-center justify-center w-12 h-12 rounded-full animate-pulse">&#9654;</label>
-          </div>
-        </div>
-
-        <div class="pag der-6">
-          <div class="hoja-cuento relative items-center justify-center ">
-            <div class="pagina-texto">
-              <h2 class="titulo-sec">¡La Victoria!</h2>
-              <p><span class="capital">C</span>uando la liebre despertó, ya era demasiado tarde. La tortuga cruzó la
-                meta entre los aplausos de todos los animales del bosque.</p>
-              <p>La liebre corrió con toda su fuerza, pero no pudo alcanzarla. <em>¡La tortuga había ganado!</em></p>
-              <p>Avergonzada, la liebre comprendió: <em>"La constancia vence al orgullo."</em></p>
-            </div>
-
-            <label for="s0"
-              class="absolute right-1 bottom-2 flecha-libro cursor-pointer text-white bg-emerald-600 hover:bg-emerald-700 hover:scale-110 transition-transform font-bold text-lg border-2 border-emerald-800 shadow-md flex items-center justify-center px-4 h-12 rounded-full">
-              ↺ Inicio
+            <label for="flip-checkbox-2" class="page-corner" aria-label="Pasar pagina 2">
+              <span class="arrow-red">➜</span>
             </label>
           </div>
-        </div>
 
-      </div>
-      <div class="pie-libro">
-        <span class="num-pag izq-num"></span>
-        <span class="titulo"></span>
-      </div>
+          <div class="page-content-left page-face-back page-shell">
+            <div class="pagina-imagen">
+              <img src="imagenes/tarj_desafio.png" alt="La tortuga y la liebre se encuentran en el bosque"
+                class="ilus-pagina">
+              <p class="cap-label">Capitulo I</p>
+            </div>
+            <label for="flip-checkbox-2" class="page-corner back-corner" aria-label="Regresar pagina 2"></label>
+          </div>
+        </section>
 
+        <section class="page turn" id="page-flip-1">
+          <div class="page-content-right page-face-front cover-page">
+            <div class="cover-frame"></div>
+            <div class="cover-sun"></div>
+            <span class="cover-cloud cloud-a">☁</span>
+            <span class="cover-cloud cloud-b">☁</span>
+            <p class="cover-kicker">Una fabula de Esopo</p>
+            <h1>La Liebre<br>y la Tortuga</h1>
+            <div class="cover-versus">
+              <span>🐇</span>
+              <strong>vs</strong>
+              <span>🐢</span>
+            </div>
+            <label for="flip-checkbox-1" class="start-reading">Leer cuento</label>
+            <label for="flip-checkbox-1" class="page-corner cover-corner" aria-label="Abrir cuento">
+              <span class="arrow-red">➜</span>
+            </label>
+          </div>
+
+          <div class="page-content-left page-face-back page-shell">
+            <div class="characters-intro">
+              <p class="titulo-cuento">Los Personajes</p>
+
+              <article class="personaje-resumen liebre-card">
+                <span>🐇</span>
+                <div>
+                  <h3>La Liebre</h3>
+                  <p>Veloz y presumida</p>
+                </div>
+              </article>
+
+              <div class="versus-mark">vs</div>
+
+              <article class="personaje-resumen tortuga-card">
+                <div>
+                  <h3>La Tortuga</h3>
+                  <p>Constante y paciente</p>
+                </div>
+                <span>🐢</span>
+              </article>
+            </div>
+            <label for="flip-checkbox-1" class="page-corner back-corner" aria-label="Cerrar portada"></label>
+          </div>
+        </section>
+
+        <span class="cover turn" id="page-cover" aria-hidden="true"></span>
+      </div>
     </div>
-  </div>
-
+  </main>
 </body>
 
 </html>
