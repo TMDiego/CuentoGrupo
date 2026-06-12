@@ -37,7 +37,7 @@
 
     .flip-card-front,
     .flip-card-back {
-        @apply absolute w-full h-full flex flex-col items-center justify-center rounded-xl p-4;
+        @apply absolute flex flex-col justify-center items-center p-4 rounded-xl w-full h-full;
         backface-visibility: hidden;
     }
 
@@ -46,7 +46,7 @@
     }
 
     .titulo-cuento {
-        @apply font-serif-title text-3xl font-bold text-center text-amber-800 drop-shadow-sm;
+        @apply drop-shadow-sm font-serif-title font-bold text-amber-800 text-3xl text-center;
     }
 }
 
@@ -218,14 +218,14 @@ body {
         visibility 0.8s ease 0.25s;
 }
 
-.intro-checkbox:checked ~ .intro-screen {
+.intro-checkbox:checked~.intro-screen {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transform: scale(1.04);
 }
 
-.intro-checkbox:checked ~ .main-container {
+.intro-checkbox:checked~.main-container {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -246,9 +246,10 @@ body {
     height: var(--book-h);
     transform-style: preserve-3d;
     border-radius: 12px;
-    box-shadow:
-        0 14px 24px rgba(0, 0, 0, 0.45),
-        0 34px 86px rgba(0, 0, 0, 0.82);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.8s ease;
+    transform: translateX(-25%);
 }
 
 .book::before {
@@ -270,6 +271,7 @@ body {
 }
 
 .book::after {
+    /* Mantenemos tus hojas exactamente igual */
     content: "";
     position: absolute;
     inset: 14px -10px 14px auto;
@@ -281,6 +283,38 @@ body {
             var(--papel-oscuro) 1px,
             var(--papel-medio) 1px,
             var(--papel-medio) 3px);
+}
+
+.page-static-right {
+    /* La sombra inicial ahora vive solo en la mitad derecha */
+    box-shadow: 14px 14px 24px rgba(0, 0, 0, 0.45);
+    transition: box-shadow 0.8s ease;
+}
+
+/* 2. Cuando el cuento se abre (checkbox 1), el libro se centra (0) y aumenta la sombra */
+#flip-checkbox-1:checked~.main-container .book {
+    transform: translateX(0);
+    /* Vuelve al centro para mostrar ambas páginas */
+    box-shadow:
+        0 14px 24px rgba(0, 0, 0, 0.45),
+        0 34px 86px rgba(0, 0, 0, 0.82);
+}
+
+/* 3. Ocultar la parte izquierda del libro mientras está cerrado para que no se asome nada */
+.cover-left,
+.page-static-left {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+/* 4. Mostrar la parte izquierda una vez que se abre la portada */
+#flip-checkbox-1:checked~.main-container .cover-left,
+#flip-checkbox-1:checked~.main-container .page-static-left {
+    opacity: 1;
+    visibility: visible;
+    /* Un ligero retraso (0.2s) para que la página izquierda aparezca naturalmente mientras la portada gira */
+    transition: opacity 0.6s ease 0.2s, visibility 0s 0.2s;
 }
 
 .cover,
@@ -788,6 +822,10 @@ body {
     animation: liebreSaltando 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+.rabbit-sleep {
+    animation: liebreSaltandoDormida 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .opening-turtle {
     animation: tortugaCaminando 6.5s linear infinite;
 }
@@ -1124,6 +1162,42 @@ body {
     background: #256d2a;
 }
 
+.texto-dormir {
+    opacity: 0;
+    /* Oculto por defecto */
+
+    /* Mismos 6.5s exactos que la liebre, sin delay */
+    animation: mostrarTexto 6.5s infinite;
+}
+
+@keyframes mostrarTexto {
+
+    /* Se mantiene oculto mientras la liebre salta */
+    0%,
+    61% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.8);
+    }
+
+    /* Aparece justo cuando la liebre se acomoda a dormir */
+    62% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Se queda visible mientras duerme */
+    95% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Desaparece justo antes de que la liebre despierte y vuelva a saltar al inicio */
+    100% {
+        opacity: 0;
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
 @keyframes flotar {
     from {
         transform: translateY(0);
@@ -1244,6 +1318,52 @@ body {
     100% {
         left: 0;
         transform: translateY(0) rotate(-4deg);
+    }
+}
+
+
+.rabbit-sleep {
+    /* Mantenemos los 6.5s y quitamos el delay */
+    animation: liebreSaltandoDormida 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes liebreSaltandoDormida {
+    0% {
+        left: 0;
+        transform: translateY(0) scale(1) rotate(-4deg);
+        --pixel: 3px;
+    }
+
+    11% {
+        transform: translateY(-34px) scale(0.9) rotate(6deg);
+    }
+
+    21% {
+        left: 38%;
+        transform: translateY(-10px) scale(0.8) rotate(-2deg);
+    }
+
+    32% {
+        transform: translateY(-38px) scale(0.7) rotate(5deg);
+    }
+
+    42% {
+        left: 70%;
+        transform: translateY(-20px) scale(0.6) rotate(-3deg);
+    }
+
+    51% {
+        left: 83%;
+        transform: translateY(-18px) scale(0.4) rotate(-4deg);
+        --pixel: 1px;
+    }
+
+    /* EL DESCANSO: Desde el 62% al 100% (2.5 segundos de pausa) */
+    62%,
+    100% {
+        left: 83%;
+        transform: translateY(-18px) scale(0.4) rotate(-4deg);
+        --pixel: 1px;
     }
 }
 
@@ -2125,50 +2245,50 @@ body {
 }
 
 .tortuga-pixel {
-  --pixel: 10px;
+    --pixel: 10px;
 
-  --outline: #202020;
-  --shell: #ae6f26;
-  --shell-dark: #5f3b1d;
-  --shell-light: #dda95a;
-  --skin: #7bde36;
-  --skin-dark: #308726;
+    --outline: #202020;
+    --shell: #ae6f26;
+    --shell-dark: #5f3b1d;
+    --shell-light: #dda95a;
+    --skin: #7bde36;
+    --skin-dark: #308726;
 
-  width: 24em;
-  height: 16em;
-  font-size: var(--pixel);
-  background:
-    linear-gradient(90deg, transparent 0em 7em, var(--outline) 7em 13em, transparent 13em 16em, var(--outline) 16em 21em, var(--shell-dark) 21em 22em, transparent 22em 24em) 0 0em / 24em 1em no-repeat,
+    width: 24em;
+    height: 16em;
+    font-size: var(--pixel);
+    background:
+        linear-gradient(90deg, transparent 0em 7em, var(--outline) 7em 13em, transparent 13em 16em, var(--outline) 16em 21em, var(--shell-dark) 21em 22em, transparent 22em 24em) 0 0em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 5em, var(--outline) 5em 7em, var(--shell) 7em 13em, var(--outline) 13em 16em, var(--skin) 16em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 1em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 5em, var(--outline) 5em 7em, var(--shell) 7em 13em, var(--outline) 13em 16em, var(--skin) 16em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 1em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 4em, var(--outline) 4em 5em, var(--shell-dark) 5em 6em, var(--shell) 6em 13em, var(--shell-light) 13em 14em, var(--shell-dark) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 2em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 4em, var(--outline) 4em 5em, var(--shell-dark) 5em 6em, var(--shell) 6em 13em, var(--shell-light) 13em 14em, var(--shell-dark) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 2em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 3em, var(--outline) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 22em, var(--skin-dark) 22em 23em, var(--shell-dark) 23em 24em) 0 3em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 3em, var(--outline) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 22em, var(--skin-dark) 22em 23em, var(--shell-dark) 23em 24em) 0 3em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 4em, var(--shell) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 13em, var(--shell-dark) 13em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 23em, var(--outline) 23em 24em) 0 4em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 4em, var(--shell) 4em 5em, var(--outline) 5em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 13em, var(--shell-dark) 13em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 17em, var(--skin-dark) 17em 18em, var(--skin) 18em 23em, var(--outline) 23em 24em) 0 4em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell) 2em 5em, var(--shell-dark) 5em 7em, var(--shell) 7em 12em, var(--shell-dark) 12em 13em, var(--outline) 13em 14em, var(--skin) 14em 17em, var(--outline) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--skin) 22em 23em, var(--outline) 23em 24em) 0 5em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell) 2em 5em, var(--shell-dark) 5em 7em, var(--shell) 7em 12em, var(--shell-dark) 12em 13em, var(--outline) 13em 14em, var(--skin) 14em 17em, var(--outline) 17em 18em, var(--skin) 18em 21em, var(--skin-dark) 21em 22em, var(--skin) 22em 23em, var(--outline) 23em 24em) 0 5em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell-light) 2em 3em, var(--shell) 3em 6em, var(--shell-dark) 6em 8em, var(--outline) 8em 13em, var(--shell-dark) 13em 14em, var(--skin) 14em 23em, var(--outline) 23em 24em) 0 6em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 1em, var(--shell-dark) 1em 2em, var(--shell-light) 2em 3em, var(--shell) 3em 6em, var(--shell-dark) 6em 8em, var(--outline) 8em 13em, var(--shell-dark) 13em 14em, var(--skin) 14em 23em, var(--outline) 23em 24em) 0 6em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--outline) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 19em, var(--outline) 19em 20em, var(--skin-dark) 20em 21em, var(--skin) 21em 22em, var(--skin-dark) 22em 23em, transparent 23em 24em) 0 7em / 24em 1em no-repeat,
+        linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--outline) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--skin-dark) 14em 15em, var(--skin) 15em 19em, var(--outline) 19em 20em, var(--skin-dark) 20em 21em, var(--skin) 21em 22em, var(--skin-dark) 22em 23em, transparent 23em 24em) 0 7em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--shell-dark) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 8em / 24em 1em no-repeat,
+        linear-gradient(90deg, var(--outline) 0em 2em, var(--shell) 2em 6em, var(--shell-dark) 6em 7em, var(--shell-light) 7em 8em, var(--shell) 8em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 22em, var(--shell-dark) 22em 23em, transparent 23em 24em) 0 8em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 3em, var(--shell) 3em 4em, var(--shell-dark) 4em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 20em, var(--skin-dark) 20em 21em, var(--outline) 21em 22em, transparent 22em 24em) 0 9em / 24em 1em no-repeat,
+        linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 3em, var(--shell) 3em 4em, var(--shell-dark) 4em 6em, var(--shell-light) 6em 7em, var(--shell) 7em 14em, var(--outline) 14em 15em, var(--skin-dark) 15em 16em, var(--skin) 16em 20em, var(--skin-dark) 20em 21em, var(--outline) 21em 22em, transparent 22em 24em) 0 9em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 4em, var(--outline) 4em 5em, var(--shell-light) 5em 6em, var(--shell) 6em 13em, var(--outline) 13em 14em, var(--shell-dark) 14em 15em, var(--skin) 15em 18em, var(--skin-dark) 18em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 10em / 24em 1em no-repeat,
+        linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 4em, var(--outline) 4em 5em, var(--shell-light) 5em 6em, var(--shell) 6em 13em, var(--outline) 13em 14em, var(--shell-dark) 14em 15em, var(--skin) 15em 18em, var(--skin-dark) 18em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 10em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 2em, var(--outline) 2em 5em, var(--shell-dark) 5em 12em, var(--outline) 12em 15em, var(--skin-dark) 15em 18em, var(--outline) 18em 20em, transparent 20em 24em) 0 11em / 24em 1em no-repeat,
+        linear-gradient(90deg, var(--outline) 0em 1em, var(--shell-dark) 1em 2em, var(--outline) 2em 5em, var(--shell-dark) 5em 12em, var(--outline) 12em 15em, var(--skin-dark) 15em 18em, var(--outline) 18em 20em, transparent 20em 24em) 0 11em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 5em, var(--outline) 5em 17em, var(--skin-dark) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 12em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 5em, var(--outline) 5em 17em, var(--skin-dark) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 12em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 12em, var(--skin) 12em 13em, var(--skin-dark) 13em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 13em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 12em, var(--skin) 12em 13em, var(--skin-dark) 13em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 13em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, transparent 6em 11em, var(--outline) 11em 12em, var(--skin) 12em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 14em / 24em 1em no-repeat,
+        linear-gradient(90deg, transparent 0em 2em, var(--skin-dark) 2em 3em, var(--skin) 3em 4em, var(--shell-dark) 4em 5em, var(--outline) 5em 6em, transparent 6em 11em, var(--outline) 11em 12em, var(--skin) 12em 14em, var(--outline) 14em 15em, transparent 15em 16em, var(--outline) 16em 17em, var(--skin) 17em 19em, var(--outline) 19em 20em, transparent 20em 24em) 0 14em / 24em 1em no-repeat,
 
-    linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 3em, var(--outline) 3em 5em, transparent 5em 12em, var(--outline) 12em 14em, transparent 14em 17em, var(--outline) 17em 19em, transparent 19em 24em) 0 15em / 24em 1em no-repeat;
+        linear-gradient(90deg, transparent 0em 2em, var(--shell-dark) 2em 3em, var(--outline) 3em 5em, transparent 5em 12em, var(--outline) 12em 14em, transparent 14em 17em, var(--outline) 17em 19em, transparent 19em 24em) 0 15em / 24em 1em no-repeat;
 }
 
 .conejo-pixel,
@@ -2180,6 +2300,14 @@ body {
     image-rendering: pixelated;
     vertical-align: middle;
     filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
+}
+
+.pixel-absolute {
+    position: absolute;
+}
+
+.pixel-xxxs {
+    --pixel: 1px;
 }
 
 .pixel-xxs {
