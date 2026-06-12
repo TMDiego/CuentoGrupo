@@ -72,9 +72,24 @@
         <section class="page turn" id="page-flip-6">
           <div class="page-content-right page-face-front page-shell">
             <div class="pagina-imagen">
-              <img src="imagenes/tarj_meta.png" alt="La tortuga cruza la meta mientras la liebre despierta"
+              <img src="imagenes/tarj_meta2.png" alt="La tortuga cruza la meta mientras la liebre despierta"
                 class="ilus-pagina">
-              <p class="pie-ilus">La tortuga cruza la meta.</p>
+              
+              <style>
+                @keyframes anim-saltito {
+                  0% { margin-top: 0; }
+                  100% { margin-top: -10px; }
+                }
+                .saltar { animation: anim-saltito 0.3s ease-out infinite alternate; }
+              </style>
+
+              <!-- Conejo en la montaña (pequeño a lo lejos) -->
+              <span class="conejo-pixel pixel-xxs saltar" style="position: absolute; top: 29%; left: 49%; transform: scale(0.6); z-index: 10;"></span>
+              
+              <!-- Tortuga llegando a la meta (más grande adelante) -->
+              <span class="tortuga-pixel pixel-xs saltar" style="position: absolute; bottom: 50%; right:50%; transform: scale(0.8); z-index: 15;"></span>
+              
+              <p class="pie-ilus" style="position: relative; z-index: 30;">La tortuga cruza la meta.</p>
             </div>
             <label for="flip-checkbox-6" class="page-corner" aria-label="Pasar pagina 6">
               <span class="arrow-red">➜</span>

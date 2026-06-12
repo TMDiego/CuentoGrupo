@@ -46,6 +46,11 @@
     --font-serif-text: "Lora", serif;
   }
 }
+@keyframes anim-saltito {
+                    0% { margin-top: 0; }
+                    100% { margin-top: -10px; }
+  }
+.saltar { animation: anim-saltito 0.3s ease-out infinite alternate; }
 @layer base {
   *, ::after, ::before, ::backdrop, ::file-selector-button {
     box-sizing: border-box;
