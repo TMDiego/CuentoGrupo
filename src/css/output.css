@@ -23,6 +23,7 @@
     --color-emerald-800: oklch(43.2% 0.095 166.913);
     --color-emerald-900: oklch(37.8% 0.077 168.94);
     --color-emerald-950: oklch(26.2% 0.051 172.552);
+    --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
@@ -195,6 +196,33 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
+  .top-\[32\%\] {
+    top: 32%;
+  }
+  .top-\[40\%\] {
+    top: 40%;
+  }
+  .top-\[45\%\] {
+    top: 45%;
+  }
+  .right-\[28\%\] {
+    right: 28%;
+  }
+  .-z-10 {
+    z-index: calc(10 * -1);
+  }
+  .z-10 {
+    z-index: 10;
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
@@ -210,8 +238,15 @@
   .h-48 {
     height: calc(var(--spacing) * 48);
   }
+  .h-full {
+    height: 100%;
+  }
   .w-full {
     width: 100%;
+  }
+  .-scale-x-100 {
+    --tw-scale-x: calc(100% * -1);
+    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .border {
     border-style: var(--tw-border-style);
@@ -264,6 +299,12 @@
   .to-emerald-900 {
     --tw-gradient-to: var(--color-emerald-900);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+  .object-fill {
+    object-fit: fill;
   }
   .text-center {
     text-align: center;
@@ -325,6 +366,9 @@
   }
   .text-emerald-800 {
     color: var(--color-emerald-800);
+  }
+  .text-white {
+    color: var(--color-white);
   }
   .uppercase {
     text-transform: uppercase;
@@ -1016,6 +1060,9 @@ body {
 .opening-rabbit {
   animation: liebreSaltando 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+.rabbit-sleep {
+  animation: liebreSaltandoDormida 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
 .opening-turtle {
   animation: tortugaCaminando 6.5s linear infinite;
 }
@@ -1311,6 +1358,28 @@ body {
   transform: translateY(-2px);
   background: #256d2a;
 }
+.texto-dormir {
+  opacity: 0;
+  animation: mostrarTexto 6.5s infinite;
+}
+@keyframes mostrarTexto {
+  0%, 61% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  62% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px) scale(1.1);
+  }
+}
 @keyframes flotar {
   from {
     transform: translateY(0);
@@ -1403,6 +1472,40 @@ body {
   100% {
     left: 0;
     transform: translateY(0) rotate(-4deg);
+  }
+}
+.rabbit-sleep {
+  animation: liebreSaltandoDormida 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes liebreSaltandoDormida {
+  0% {
+    left: 0;
+    transform: translateY(0) scale(1) rotate(-4deg);
+    --pixel: 3px;
+  }
+  11% {
+    transform: translateY(-34px) scale(0.9) rotate(6deg);
+  }
+  21% {
+    left: 38%;
+    transform: translateY(-10px) scale(0.8) rotate(-2deg);
+  }
+  32% {
+    transform: translateY(-38px) scale(0.7) rotate(5deg);
+  }
+  42% {
+    left: 70%;
+    transform: translateY(-20px) scale(0.6) rotate(-3deg);
+  }
+  51% {
+    left: 83%;
+    transform: translateY(-18px) scale(0.4) rotate(-4deg);
+    --pixel: 1px;
+  }
+  62%, 100% {
+    left: 83%;
+    transform: translateY(-18px) scale(0.4) rotate(-4deg);
+    --pixel: 1px;
   }
 }
 @keyframes tortugaCaminando {
@@ -1602,6 +1705,12 @@ body {
   vertical-align: middle;
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
 }
+.pixel-absolute {
+  position: absolute;
+}
+.pixel-xxxs {
+  --pixel: 1px;
+}
 .pixel-xxs {
   --pixel: 2px;
 }
@@ -1622,6 +1731,21 @@ body {
   top: 50%;
   transform: translateY(-50%);
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -1807,6 +1931,9 @@ body {
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;

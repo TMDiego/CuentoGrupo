@@ -93,10 +93,12 @@
 
         <section class="page turn" id="page-flip-5">
           <div class="page-content-right page-face-front page-shell">
-            <div class="pagina-imagen">
-              <img src="imagenes/tarj_siesta.png" alt="La liebre duerme bajo el arbol mientras la tortuga avanza"
-                class="ilus-pagina">
-            </div>
+
+            <img src="imagenes/fondo siesta.png" alt="La liebre duerme bajo el arbol mientras la tortuga avanza"
+              class="absolute inset-0 w-full h-full object-cover -z-10">
+            <div class="conejo-pixel pixel-xs pixel-absolute top-[40%] opening-runner rabbit-sleep"></div>
+            <span class="z-10 absolute top-[32%] right-[28%] font-bold text-white texto-dormir">Zzz..</span>
+
             <label for="flip-checkbox-5" class="page-corner" aria-label="Pasar pagina 5">
               <span class="arrow-red">➜</span>
             </label>
@@ -149,16 +151,10 @@
             </label>
           </div>
 
-          <div class="page-content-left page-face-back page-shell">
-            <div class="pagina-texto">
-              <p class="cap-label">Capitulo III</p>
-              <h3 class="titulo-cap">La Siesta Fatal</h3>
-              <div class="linea-deco"></div>
-              <p>La liebre corrió tan rápido que pronto dejó a la tortuga muy atrás.</p>
-              <p>Confiada en su enorme ventaja, decidió descansar bajo la sombra de un árbol.</p>
-              <p><em>"Tengo tiempo de sobra"</em>, pensó. <em>"Esa tortuga jamás podrá alcanzarme."</em></p>
-              <p>Y así, entre la brisa, la liebre cerró los ojos y se quedó profundamente dormida.</p>
-            </div>
+          <div class="page-content-left page-face-back page-shell relative">
+            <img src="./imagenes/fondo siesta.png" alt="siesta"
+              class="absolute inset-0 w-full h-full object-cover -z-10 -scale-x-100">
+            <div class="tortuga-pixel pixel-xs absolute top-[45%] opening-runner opening-turtle"></div>
             <label for="flip-checkbox-4" class="page-corner back-corner" aria-label="Regresar pagina 4"></label>
           </div>
         </section>
@@ -179,10 +175,10 @@
           </div>
 
           <div class="page-content-left page-face-back page-shell">
-            <div class="pagina-imagen">
-              <img src="imagenes/tarj_carrera.png" alt="El zorro da la salida de la carrera" class="ilus-pagina">
-              <p class="cap-label">Capitulo II</p>
-            </div>
+
+            <img src="imagenes/tarj_carrera.png" alt="El zorro da la salida de la carrera"
+              class="absolute inset-0 w-full h-full object-fill -z-10">
+
             <label for="flip-checkbox-3" class="page-corner back-corner" aria-label="Regresar pagina 3"></label>
           </div>
         </section>

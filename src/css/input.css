@@ -822,6 +822,10 @@ body {
     animation: liebreSaltando 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+.rabbit-sleep {
+    animation: liebreSaltandoDormida 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .opening-turtle {
     animation: tortugaCaminando 6.5s linear infinite;
 }
@@ -1158,6 +1162,42 @@ body {
     background: #256d2a;
 }
 
+.texto-dormir {
+    opacity: 0;
+    /* Oculto por defecto */
+
+    /* Mismos 6.5s exactos que la liebre, sin delay */
+    animation: mostrarTexto 6.5s infinite;
+}
+
+@keyframes mostrarTexto {
+
+    /* Se mantiene oculto mientras la liebre salta */
+    0%,
+    61% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.8);
+    }
+
+    /* Aparece justo cuando la liebre se acomoda a dormir */
+    62% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Se queda visible mientras duerme */
+    95% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Desaparece justo antes de que la liebre despierte y vuelva a saltar al inicio */
+    100% {
+        opacity: 0;
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
 @keyframes flotar {
     from {
         transform: translateY(0);
@@ -1278,6 +1318,52 @@ body {
     100% {
         left: 0;
         transform: translateY(0) rotate(-4deg);
+    }
+}
+
+
+.rabbit-sleep {
+    /* Mantenemos los 6.5s y quitamos el delay */
+    animation: liebreSaltandoDormida 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes liebreSaltandoDormida {
+    0% {
+        left: 0;
+        transform: translateY(0) scale(1) rotate(-4deg);
+        --pixel: 3px;
+    }
+
+    11% {
+        transform: translateY(-34px) scale(0.9) rotate(6deg);
+    }
+
+    21% {
+        left: 38%;
+        transform: translateY(-10px) scale(0.8) rotate(-2deg);
+    }
+
+    32% {
+        transform: translateY(-38px) scale(0.7) rotate(5deg);
+    }
+
+    42% {
+        left: 70%;
+        transform: translateY(-20px) scale(0.6) rotate(-3deg);
+    }
+
+    51% {
+        left: 83%;
+        transform: translateY(-18px) scale(0.4) rotate(-4deg);
+        --pixel: 1px;
+    }
+
+    /* EL DESCANSO: Desde el 62% al 100% (2.5 segundos de pausa) */
+    62%,
+    100% {
+        left: 83%;
+        transform: translateY(-18px) scale(0.4) rotate(-4deg);
+        --pixel: 1px;
     }
 }
 
@@ -2214,6 +2300,14 @@ body {
     image-rendering: pixelated;
     vertical-align: middle;
     filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
+}
+
+.pixel-absolute {
+    position: absolute;
+}
+
+.pixel-xxxs {
+    --pixel: 1px;
 }
 
 .pixel-xxs {
