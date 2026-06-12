@@ -1,0 +1,101 @@
+DOCUMENTACIÓN DE IMPLEMENTACIÓN - CAPÍTULO I: EL DESAFÍO
+
+0. SITIO DE REFERENCIA DE CLASES TAILWIND
+- Documentación oficial: https://tailwindcss.com/docs
+- Buscador rápido (Cheat Sheet): https://tailwindcomponents.com/cheatsheet
+- Cómo saber qué clase usar: Las clases de Tailwind son abreviaciones directas de propiedades CSS (ej. border-r-2 equivale a border-right-width: 2px). Si conoces la propiedad CSS, buscas su utility en la documentación.
+
+
+1. CUÁNDO Y CÓMO EJECUTAR EL COMANDO DE COMPILACIÓN
+- Ejecución única: NO debes ejecutar el comando cada vez que abres el cuento en el navegador. Una vez compilado, puedes abrir index.html directamente.
+- Cuándo ejecutarlo: Únicamente si cambias clases en index.html o modificas estilos/animaciones en src/css/input.css.
+- Comando de compilación (ejecutar en cmd de Windows):
+  cmd.exe /c "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css"
+- Para desarrollo automático (compila en cada guardado):
+  npm run dev
+
+
+2. DETALLE DE CLASES UTILIZADAS (TAILWIND VS ESTILOS EXTERNOS)
+
+A) Contenedor del escenario (index.html):
+<div class="relative flex flex-col justify-between bg-gradient-to-b from-sky-300 via-sky-100 to-emerald-200 shadow-inner border border-amber-950/20 rounded-lg w-full h-full overflow-hidden escenario-desafio">
+- relative: (Tailwind) Posiciona de forma relativa para servir de base a elementos absolutos.
+- flex: (Tailwind) Aplica diseño flexbox.
+- flex-col: (Tailwind) Distribuye hijos en columna (vertical).
+- justify-between: (Tailwind) Separa los hijos hacia los extremos superior e inferior.
+- bg-gradient-to-b: (Tailwind) Fondo degradado de arriba a abajo.
+- from-sky-300 via-sky-100 to-emerald-200: (Tailwind) Colores del degradado.
+- shadow-inner: (Tailwind) Sombra interior de profundidad.
+- border: (Tailwind) Añade borde fino.
+- border-amber-950/20: (Tailwind) Color del borde marrón oscuro con 20% de opacidad.
+- rounded-lg: (Tailwind) Esquinas redondeadas.
+- w-full / h-full: (Tailwind) Ancho y alto al 100% de la página.
+- overflow-hidden: (Tailwind) Oculta elementos que se salgan de los bordes.
+- escenario-desafio: (Estilo externo) Definido en input.css (carga el fondo si existe la imagen).
+
+B) Imagen de fondo (index.html):
+<img class="z-0 absolute inset-0 w-full h-full object-cover pointer-events-none" ...>
+- z-0: (Tailwind) Plano de profundidad cero (atrás de todo).
+- absolute: (Tailwind) Posición absoluta.
+- inset-0: (Tailwind) Ajusta a 0px de distancia de los 4 bordes del contenedor.
+- w-full / h-full: (Tailwind) Ocupa todo el ancho y alto del contenedor.
+- object-cover: (Tailwind) Ajusta la imagen sin deformarla.
+- pointer-events-none: (Tailwind) Desactiva interacción de clics con la imagen.
+
+C) Capa de contenido de personajes (index.html):
+<div class="z-10 relative flex flex-col justify-end px-4 pb-8 w-full h-full">
+- z-10: (Tailwind) Coloca esta capa encima de la imagen de fondo.
+- px-4: (Tailwind) Padding lateral interno de 16px.
+- pb-8: (Tailwind) Padding inferior interno de 32px.
+- relative / flex / flex-col / justify-end / w-full / h-full: (Tailwind) Control de flexbox alineado abajo.
+
+D) Bocadillo de diálogo de la Liebre (index.html):
+<div class="relative bg-white opacity-0 shadow-md px-3 py-1.5 border-2 border-orange-500 rounded-xl max-w-[120px] font-serif-text font-bold text-[10px] text-amber-950 animate-[bubble-fade-1_12s_infinite] bubble-liebre">
+- relative: (Tailwind) Base relativa para la flechita del diálogo.
+- bg-white: (Tailwind) Fondo blanco de la burbuja.
+- opacity-0: (Tailwind) Inicia invisible antes de que actúe la animación.
+- shadow-md: (Tailwind) Sombra de elevación.
+- px-3 / py-1.5: (Tailwind) Rellenos internos (paddings) horizontal y vertical.
+- border-2: (Tailwind) Borde de 2px de grosor.
+- border-orange-500: (Tailwind) Borde color naranja. (En tortuga es border-emerald-600).
+- rounded-xl: (Tailwind) Esquinas muy redondeadas.
+- max-w-[120px]: (Tailwind) Ancho máximo fijo del bocadillo.
+- font-bold: (Tailwind) Texto en negrita.
+- text-[10px]: (Tailwind) Tamaño de texto de 10px.
+- text-amber-950: (Tailwind) Color de texto marrón/ámbar muy oscuro.
+- animate-[bubble-fade-1_12s_infinite]: (Tailwind) Animación de desvanecimiento con retardo.
+- font-serif-text: (Estilo externo) Tipografía del proyecto (fuente Lora).
+- bubble-liebre: (Estilo externo) Clase de referencia en input.css.
+
+E) Flecha apuntadora del bocadillo (index.html):
+<div class="right-4 bottom-[-6px] absolute bg-white border-orange-500 border-r-2 border-b-2 w-2 h-2 rotate-45">
+- right-4 / bottom-[-6px]: (Tailwind) Posiciona la flechita en la parte inferior derecha.
+- absolute: (Tailwind) Posición absoluta.
+- bg-white: (Tailwind) Fondo blanco.
+- border-orange-500: (Tailwind) Color del borde.
+- border-r-2 / border-b-2: (Tailwind) Añade bordes únicamente en la derecha e inferior.
+- w-2 / h-2: (Tailwind) Cuadrado de 8px de ancho y alto.
+- rotate-45: (Tailwind) Rota 45 grados el cuadrado para simular un triángulo.
+
+F) Título inferior (index.html):
+<p class="inline-block bg-[#f5edd8] shadow-sm px-5 py-1.5 border border-[#2c1a0e]/40 rounded-full font-serif-text font-semibold text-[#2c1a0e] text-xs pie-ilus">
+- inline-block: (Tailwind) Ajusta el elemento al ancho de su texto.
+- bg-[#f5edd8]: (Tailwind) Color de fondo crema personalizado.
+- shadow-sm: (Tailwind) Sombra suave.
+- px-5 / py-1.5: (Tailwind) Padding de la cápsula.
+- border: (Tailwind) Borde fino.
+- border-[#2c1a0e]/40: (Tailwind) Borde marrón con 40% de opacidad.
+- rounded-full: (Tailwind) Esquinas redondeadas estilo cápsula.
+- font-semibold: (Tailwind) Peso de fuente semi-negrita.
+- text-[#2c1a0e]: (Tailwind) Color de texto marrón.
+- text-xs: (Tailwind) Tamaño de letra extra pequeño.
+- font-serif-text / pie-ilus: (Estilo externo) Estilos del proyecto importados y definidos en input.css.
+
+
+3. ADVERTENCIAS Y RESOLUCIÓN DE PROBLEMAS
+
+- No mover nombres de archivos: No alteres el nombre del archivo imagenes/fondo_desafio (jpg, webp o png), ya que index.html depende de esa ruta exacta.
+- Error de ejecución de scripts en PowerShell: Si obtienes un error de "UnauthorizedAccess" al intentar compilar en PowerShell, usa la terminal estándar de Windows (CMD) o antepón cmd.exe /c al comando.
+- Diseño visual roto o cambios que no aparecen: Si agregas clases en index.html y no se ven reflejadas, asegúrate de realizar la compilación para actualizar output.css.
+- Personajes fuera de escala: No quites la clase "pixel-xs" de los contenedores de los personajes, ya que esta clase escala los píxeles internos a 4px garantizando la proporción correcta.
+- Respetar el resto de código: No alteres los identificadores o etiquetas externos a la sección del Capítulo I (id="page-flip-2" o clases .page-content-left), pues controlan el comportamiento de volteado de hojas en 3D del libro.

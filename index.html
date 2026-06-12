@@ -37,12 +37,12 @@
   <main class="main-container">
     <div class="book-container">
       <div class="book">
-        <span class="cover cover-left" aria-hidden="true"></span>
+        <span class="cover-left cover" aria-hidden="true"></span>
 
-        <section class="page page-static-left">
+        <section class="page-static-left page">
           <div class="page-content-left page-shell opening-scene opening-rabbit-scene">
             <div class="opening-sky">
-              <span class="opening-cloud cloud-left"></span>
+              <span class="cloud-left opening-cloud"></span>
               <span class="opening-sun"></span>
             </div>
             <div class="opening-track">
@@ -51,7 +51,7 @@
           </div>
         </section>
 
-        <section class="page page-static-right">
+        <section class="page-static-right page">
           <div class="page-content-right page-shell">
             <div class="pagina-texto">
               <h2 class="titulo-sec">La Victoria</h2>
@@ -186,39 +186,39 @@
         <section class="page turn" id="page-flip-2">
           <div class="page-content-right page-face-front page-shell">
             <div class="character-cards">
-              <div class="group h-48 w-full [perspective:1000px]">
+              <div class="group w-full h-48 [perspective:1000px]">
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
                   <div
-                    class="flip-card-front bg-gradient-to-br from-amber-50 to-amber-100 shadow-lg border border-amber-300">
-                    <span class="conejo-pixel pixel-xs mb-2" aria-label="Liebre"></span>
-                    <h3 class="font-serif-title text-2xl font-bold text-amber-800">La Liebre</h3>
-                    <p class="font-serif-text text-amber-700 mt-1">Veloz y presumida</p>
-                    <small class="text-amber-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el
+                    class="bg-gradient-to-br from-amber-50 to-amber-100 shadow-lg border border-amber-300 flip-card-front">
+                    <span class="mb-2 conejo-pixel pixel-xs" aria-label="Liebre"></span>
+                    <h3 class="font-serif-title font-bold text-amber-800 text-2xl">La Liebre</h3>
+                    <p class="mt-1 font-serif-text text-amber-700">Veloz y presumida</p>
+                    <small class="mt-3 font-semibold text-amber-500 text-xs uppercase tracking-wider">Pasa el
                       cursor</small>
                   </div>
                   <div
-                    class="flip-card-back bg-gradient-to-br from-amber-700 to-amber-900 shadow-lg border border-amber-950 text-amber-50">
-                    <span class="conejo-pixel pixel-xxs mb-3 opacity-80" aria-label="Liebre"></span>
-                    <p class="font-serif-text text-center text-sm leading-relaxed">Era la más rápida del bosque. Siempre
+                    class="bg-gradient-to-br from-amber-700 to-amber-900 shadow-lg border border-amber-950 text-amber-50 flip-card-back">
+                    <span class="opacity-80 mb-3 conejo-pixel pixel-xxs" aria-label="Liebre"></span>
+                    <p class="font-serif-text text-sm text-center leading-relaxed">Era la más rápida del bosque. Siempre
                       ganaba y se burlaba de todos.</p>
                   </div>
                 </div>
               </div>
 
-              <div class="group h-48 w-full [perspective:1000px]">
+              <div class="group w-full h-48 [perspective:1000px]">
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
                   <div
-                    class="flip-card-front bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-lg border border-emerald-300">
-                    <span class="tortuga-pixel pixel-xs mb-2" aria-label="Tortuga"></span>
-                    <h3 class="font-serif-title text-2xl font-bold text-emerald-800">La Tortuga</h3>
-                    <p class="font-serif-text text-emerald-700 mt-1">Lenta pero constante</p>
-                    <small class="text-emerald-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el
+                    class="bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-lg border border-emerald-300 flip-card-front">
+                    <span class="mb-2 tortuga-pixel pixel-xs" aria-label="Tortuga"></span>
+                    <h3 class="font-serif-title font-bold text-emerald-800 text-2xl">La Tortuga</h3>
+                    <p class="mt-1 font-serif-text text-emerald-700">Lenta pero constante</p>
+                    <small class="mt-3 font-semibold text-emerald-500 text-xs uppercase tracking-wider">Pasa el
                       cursor</small>
                   </div>
                   <div
-                    class="flip-card-back bg-gradient-to-br from-emerald-700 to-emerald-900 shadow-lg border border-emerald-950 text-emerald-50">
-                    <span class="tortuga-pixel pixel-xxs mb-3 opacity-80" aria-label="Tortuga"></span>
-                    <p class="font-serif-text text-center text-sm leading-relaxed">Era tranquila y perseverante. Nunca
+                    class="bg-gradient-to-br from-emerald-700 to-emerald-900 shadow-lg border border-emerald-950 text-emerald-50 flip-card-back">
+                    <span class="opacity-80 mb-3 tortuga-pixel pixel-xxs" aria-label="Tortuga"></span>
+                    <p class="font-serif-text text-sm text-center leading-relaxed">Era tranquila y perseverante. Nunca
                       se
                       rendía, avanzaba paso a paso.</p>
                   </div>
@@ -232,9 +232,81 @@
 
           <div class="page-content-left page-face-back page-shell">
             <div class="pagina-imagen">
-              <img src="imagenes/tarj_desafio.png" alt="La tortuga y la liebre se encuentran en el bosque"
-                class="ilus-pagina">
-              <p class="cap-label">Capitulo I</p>
+              <div
+                class="relative flex flex-col justify-between bg-gradient-to-b from-sky-300 via-sky-100 to-emerald-200 shadow-inner border border-amber-950/20 rounded-lg w-full h-full overflow-hidden escenario-desafio">
+
+                <!-- Imagen de fondo con carga recursiva/fallback -->
+                <img src="imagenes/fondo_desafio.jpg" alt="Fondo Desafío"
+                  class="z-0 absolute inset-0 w-full h-full object-cover pointer-events-none"
+                  onerror="this.onerror=null; this.src='imagenes/fondo_desafio.webp'; this.onerror=function(){ this.src='imagenes/fondo_desafio.jpg'; this.onerror=function(){ this.style.display='none'; } }">
+
+
+
+                <!-- Capa del Contenido y Personajes -->
+                <div class="z-10 relative flex flex-col justify-end px-4 pb-8 w-full h-full">
+
+                  <!-- Globos de Diálogo de Cuento -->
+                  <div class="bottom-36 absolute inset-x-0 flex justify-between px-6 pointer-events-none select-none">
+                    <!-- Tortuga (Izquierda) -->
+                    <div
+                      class="relative bg-white opacity-0 shadow-md px-3 py-1.5 border-2 border-emerald-600 rounded-xl max-w-[120px] font-serif-text font-bold text-[10px] text-emerald-950 animate-[bubble-fade-2_12s_infinite] bubble-tortuga">
+                      ¡Te reto a una carrera!
+                      <div
+                        class="bottom-[-6px] left-4 absolute bg-white border-emerald-600 border-r-2 border-b-2 w-2 h-2 rotate-45">
+                      </div>
+                    </div>
+
+                    <!-- Liebre (Derecha) -->
+                    <div
+                      class="relative bg-white opacity-0 shadow-md px-3 py-1.5 border-2 border-orange-500 rounded-xl max-w-[120px] font-serif-text font-bold text-[10px] text-amber-950 animate-[bubble-fade-1_12s_infinite] bubble-liebre">
+                      ¡Ja, ja, ja! ¡Eres lenta!
+                      <div
+                        class="right-4 bottom-[-6px] absolute bg-white border-orange-500 border-r-2 border-b-2 w-2 h-2 rotate-45">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- El Zorro Árbitro tiene su globo flotante cerca de su cabeza -->
+                  <div class="bottom-44 absolute inset-x-0 flex justify-center pointer-events-none select-none">
+                    <div
+                      class="relative bg-white opacity-0 shadow-md px-3 py-1.5 border-2 border-orange-500 rounded-xl max-w-[140px] font-serif-text font-bold text-[10px] text-orange-950 animate-[bubble-fade-3_12s_infinite] bubble-zorro">
+                      ¡Que comience el reto!
+                      <div
+                        class="bottom-[-6px] left-1/2 absolute bg-white border-orange-500 border-r-2 border-b-2 w-2 h-2 rotate-45 -translate-x-1/2">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Fila de Personajes colocados en el escenario -->
+                  <div class="relative flex justify-between items-end pb-1 w-full h-28">
+
+                    <!-- Tortuga Competidora (Izquierda, mirando a la derecha) -->
+                    <div class="flex flex-col items-center animate-[desafio-tortuga_12s_infinite]">
+                      <span class="tortuga-pixel pixel-xs" aria-label="Tortuga desafiante"></span>
+                    </div>
+
+                    <!-- Zorro Árbitro (Centro) -->
+                    <div class="flex flex-col items-center animate-[desafio-zorro_6s_infinite]">
+                      <span class="zorro-pixel pixel-xs" aria-label="Zorro árbitro"></span>
+                    </div>
+
+                    <!-- Liebre Orgullosa (Derecha, mirando a la izquierda) -->
+                    <div class="flex flex-col items-center mr-2 animate-[desafio-liebre_6s_infinite]">
+                      <span class="scale-x-[-1] conejo-pixel pixel-xs" aria-label="Liebre burlona"></span>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Título/Pie de Ilustración -->
+                <div class="z-20 pb-2.5 w-full text-center">
+                  <p
+                    class="inline-block bg-[#f5edd8] shadow-sm px-5 py-1.5 border border-[#2c1a0e]/40 rounded-full font-serif-text font-semibold text-[#2c1a0e] text-xs pie-ilus">
+                    Capítulo I: El Desafío
+                  </p>
+                </div>
+
+              </div>
             </div>
             <label for="flip-checkbox-2" class="page-corner back-corner" aria-label="Regresar pagina 2"></label>
           </div>
@@ -244,8 +316,8 @@
           <div class="page-content-right page-face-front cover-page">
             <div class="cover-frame"></div>
             <div class="opening-sky">
-              <span class="opening-cloud cloud-left"></span>
-              <span class="opening-cloud cloud-right"></span>
+              <span class="cloud-left opening-cloud"></span>
+              <span class="cloud-right opening-cloud"></span>
             </div>
             <h1>La Liebre<br>y la Tortuga</h1>
             <div class="opening-track cover-opening-track">
