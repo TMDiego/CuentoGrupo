@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <input type="checkbox" id="present-book" class="intro-checkbox">
   <input type="checkbox" id="flip-checkbox-1" class="flip-checkbox">
   <input type="checkbox" id="flip-checkbox-2" class="flip-checkbox">
   <input type="checkbox" id="flip-checkbox-3" class="flip-checkbox">
@@ -21,16 +22,32 @@
   <input type="checkbox" id="flip-checkbox-5" class="flip-checkbox">
   <input type="checkbox" id="flip-checkbox-6" class="flip-checkbox">
 
+  <section class="intro-screen" aria-label="Presentacion del cuento">
+    <div class="intro-content">
+      <p class="intro-kicker">Fabula de Esopo</p>
+      <h1>La Liebre y la Tortuga</h1>
+      <div class="intro-characters" aria-hidden="true">
+        <span class="conejo-pixel pixel-hero intro-character intro-rabbit"></span>
+        <span class="tortuga-pixel pixel-hero intro-character intro-turtle"></span>
+      </div>
+      <label for="present-book" class="intro-button">Presentar libro</label>
+    </div>
+  </section>
+
   <main class="main-container">
     <div class="book-container">
       <div class="book">
         <span class="cover cover-left" aria-hidden="true"></span>
 
         <section class="page page-static-left">
-          <div class="page-content-left page-shell page-endpaper">
-            <p class="cap-label">Fabula de Esopo</p>
-            <h2 class="titulo-sec">La Liebre y la Tortuga</h2>
-            <p>Un cuento sobre el orgullo, la paciencia y el valor de avanzar sin rendirse.</p>
+          <div class="page-content-left page-shell opening-scene opening-rabbit-scene">
+            <div class="opening-sky">
+              <span class="opening-cloud cloud-left"></span>
+              <span class="opening-sun"></span>
+            </div>
+            <div class="opening-track">
+              <span class="conejo-pixel pixel-sm opening-runner opening-rabbit" aria-label="Liebre saltando"></span>
+            </div>
           </div>
         </section>
 
@@ -112,13 +129,13 @@
                   <span class="nombre-carril">Liebre</span>
                   <div class="pista pista-conejo">
                     <span class="zzz">Zzz</span>
-                    <span class="corredor">🐇</span>
+                    <span class="corredor conejo-pixel pixel-xxs" aria-label="Liebre"></span>
                   </div>
                 </div>
                 <div class="carril-wrap">
                   <span class="nombre-carril">Tortuga</span>
                   <div class="pista pista-tortu">
-                    <span class="corredor caminante">🐢</span>
+                    <span class="corredor caminante tortuga-pixel pixel-xxs" aria-label="Tortuga"></span>
                   </div>
                 </div>
               </div>
@@ -177,14 +194,15 @@
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
                   <div
                     class="flip-card-front bg-gradient-to-br from-amber-50 to-amber-100 shadow-lg border border-amber-300">
-                    <span class="text-5xl mb-2 drop-shadow-md">🐇</span>
+                    <span class="conejo-pixel pixel-xs mb-2" aria-label="Liebre"></span>
                     <h3 class="font-serif-title text-2xl font-bold text-amber-800">La Liebre</h3>
                     <p class="font-serif-text text-amber-700 mt-1">Veloz y presumida</p>
-                    <small class="text-amber-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el cursor</small>
+                    <small class="text-amber-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el
+                      cursor</small>
                   </div>
                   <div
                     class="flip-card-back bg-gradient-to-br from-amber-700 to-amber-900 shadow-lg border border-amber-950 text-amber-50">
-                    <span class="text-4xl mb-3 opacity-80">🐇</span>
+                    <span class="conejo-pixel pixel-xxs mb-3 opacity-80" aria-label="Liebre"></span>
                     <p class="font-serif-text text-center text-sm leading-relaxed">Era la más rápida del bosque. Siempre
                       ganaba y se burlaba de todos.</p>
                   </div>
@@ -195,15 +213,17 @@
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
                   <div
                     class="flip-card-front bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-lg border border-emerald-300">
-                    <span class="text-5xl mb-2 drop-shadow-md">🐢</span>
+                    <span class="tortuga-pixel pixel-xs mb-2" aria-label="Tortuga"></span>
                     <h3 class="font-serif-title text-2xl font-bold text-emerald-800">La Tortuga</h3>
                     <p class="font-serif-text text-emerald-700 mt-1">Lenta pero constante</p>
-                    <small class="text-emerald-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el cursor</small>
+                    <small class="text-emerald-500 mt-3 font-semibold text-xs uppercase tracking-wider">Pasa el
+                      cursor</small>
                   </div>
                   <div
                     class="flip-card-back bg-gradient-to-br from-emerald-700 to-emerald-900 shadow-lg border border-emerald-950 text-emerald-50">
-                    <span class="text-4xl mb-3 opacity-80">🐢</span>
-                    <p class="font-serif-text text-center text-sm leading-relaxed">Era tranquila y perseverante. Nunca se
+                    <span class="tortuga-pixel pixel-xxs mb-3 opacity-80" aria-label="Tortuga"></span>
+                    <p class="font-serif-text text-center text-sm leading-relaxed">Era tranquila y perseverante. Nunca
+                      se
                       rendía, avanzaba paso a paso.</p>
                   </div>
                 </div>
@@ -227,15 +247,13 @@
         <section class="page turn" id="page-flip-1">
           <div class="page-content-right page-face-front cover-page">
             <div class="cover-frame"></div>
-            <div class="cover-sun"></div>
-            <span class="cover-cloud cloud-a">☁</span>
-            <span class="cover-cloud cloud-b">☁</span>
-            <p class="cover-kicker">Una fabula de Esopo</p>
+            <div class="opening-sky">
+              <span class="opening-cloud cloud-left"></span>
+              <span class="opening-cloud cloud-right"></span>
+            </div>
             <h1>La Liebre<br>y la Tortuga</h1>
-            <div class="cover-versus">
-              <span>🐇</span>
-              <strong>vs</strong>
-              <span>🐢</span>
+            <div class="opening-track cover-opening-track">
+              <span class="tortuga-pixel pixel-sm opening-runner opening-turtle" aria-label="Tortuga caminando"></span>
             </div>
             <label for="flip-checkbox-1" class="start-reading">Leer cuento</label>
             <label for="flip-checkbox-1" class="page-corner cover-corner" aria-label="Abrir cuento">
@@ -248,7 +266,7 @@
               <p class="titulo-cuento">Los Personajes</p>
 
               <article class="personaje-resumen liebre-card">
-                <span>🐇</span>
+                <span class="conejo-pixel pixel-xxs" aria-label="Liebre"></span>
                 <div>
                   <h3>La Liebre</h3>
                   <p>Veloz y presumida</p>
@@ -262,7 +280,7 @@
                   <h3>La Tortuga</h3>
                   <p>Constante y paciente</p>
                 </div>
-                <span>🐢</span>
+                <span class="tortuga-pixel pixel-xxs" aria-label="Tortuga"></span>
               </article>
             </div>
             <label for="flip-checkbox-1" class="page-corner back-corner" aria-label="Cerrar portada"></label>
