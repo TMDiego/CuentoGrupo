@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .pixel-landscape {
+  width: 640px;
+  height: 520px;
+  position: relative;
+  overflow: hidden;
+
+  image-rendering: pixelated;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #10aee2 0%,
+      #10aee2 48%,
+      #2fc0e9 48%,
+      #2fc0e9 56%,
+      #58c9ed 56%,
+      #58c9ed 64%,
+      #82d8f4 64%,
+      #82d8f4 72%,
+      #b9ecfa 72%,
+      #b9ecfa 100%
+    );
+}
+
+/* ========================= */
+/* NUBES PIXEL ART */
+/* ========================= */
+
+.cloud {
+  --u: 14px;
+  position: absolute;
+  width: var(--u);
+  height: var(--u);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  width: var(--u);
+  height: var(--u);
+}
+
+/* Nube grande */
+.cloud-big {
+  top: 70px;
+  left: 105px;
+}
+
+.cloud-big::before {
+  background: transparent;
+  box-shadow:
+    calc(2 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+    calc(3 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+    calc(4 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+
+    calc(1 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(2 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(3 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(4 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(5 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+
+    calc(0 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(1 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(2 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(3 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(4 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(5 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+    calc(6 * var(--u)) calc(2 * var(--u)) 0 #ffffff;
+}
+
+.cloud-big::after {
+  background: transparent;
+  box-shadow:
+    calc(0 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(1 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(2 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(3 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(4 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(5 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(6 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+    calc(7 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8;
+}
+
+/* Nube pequeña */
+.cloud-small {
+  --u: 12px;
+  top: 165px;
+  right: 185px;
+}
+
+.cloud-small::before {
+  background: transparent;
+  box-shadow:
+    calc(1 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+    calc(2 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+
+    calc(0 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(1 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(2 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+    calc(3 * var(--u)) calc(1 * var(--u)) 0 #ffffff;
+}
+
+.cloud-small::after {
+  background: transparent;
+  box-shadow:
+    calc(0 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+    calc(1 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+    calc(2 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+    calc(3 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+    calc(4 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8;
+}
+
+/* ========================= */
+/* MONTAÑAS PIXEL ART */
+/* ========================= */
+
+.hill {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Capa verde clara del fondo */
+.hill-back {
+  height: 210px;
+  background: #7ed321;
+  bottom: 45px;
+
+  clip-path: polygon(
+    0% 70%,
+    12% 70%,
+    12% 62%,
+    18% 62%,
+    18% 55%,
+    27% 55%,
+    27% 48%,
+    45% 48%,
+    45% 55%,
+    58% 55%,
+    58% 62%,
+    72% 62%,
+    72% 70%,
+    100% 70%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+/* Capa verde media */
+.hill-mid {
+  height: 210px;
+  background: #55ad18;
+  bottom: 0;
+
+  clip-path: polygon(
+    0% 58%,
+    8% 58%,
+    8% 50%,
+    15% 50%,
+    15% 43%,
+    26% 43%,
+    26% 36%,
+    38% 36%,
+    38% 43%,
+    50% 43%,
+    50% 52%,
+    60% 52%,
+    60% 62%,
+    75% 62%,
+    75% 55%,
+    90% 55%,
+    90% 62%,
+    100% 62%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+/* Capa verde oscura frontal */
+.hill-front {
+  height: 170px;
+  background: #27740d;
+  bottom: 0;
+
+  clip-path: polygon(
+    0% 35%,
+    12% 35%,
+    12% 45%,
+    23% 45%,
+    23% 58%,
+    34% 58%,
+    34% 72%,
+    43% 72%,
+    43% 64%,
+    58% 64%,
+    58% 55%,
+    72% 55%,
+    72% 48%,
+    88% 48%,
+    88% 55%,
+    100% 55%,
+    100% 100%,
+    0% 100%
+  );
+}
+    </style>
+    <div class="pixel-landscape">
+  <div class="cloud cloud-big"></div>
+  <div class="cloud cloud-small"></div>
+
+  <div class="hill hill-back"></div>
+  <div class="hill hill-mid"></div>
+  <div class="hill hill-front"></div>
+</div>
+</body>
+</html>
