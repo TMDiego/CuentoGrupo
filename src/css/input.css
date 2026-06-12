@@ -2209,3 +2209,8 @@ body {
     transform: translateY(-50%);
     filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
 }
+
+.arbol-animado {
+    animation: oscilar 4s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+}
