@@ -22,20 +22,20 @@
   <input type="checkbox" id="flip-checkbox-5" class="flip-checkbox">
   <input type="checkbox" id="flip-checkbox-6" class="flip-checkbox">
 
-  <section class="intro-screen" aria-label="Presentacion del cuento">
-    <div class="intro-content">
-      <p class="intro-kicker">Fabula de Esopo</p>
-      <h1>La Liebre y la Tortuga</h1>
-      <div class="intro-characters" aria-hidden="true">
-        <span class="conejo-pixel pixel-hero intro-character intro-rabbit"></span>
-        <span class="tortuga-pixel pixel-hero intro-character intro-turtle"></span>
+  <section class="intro-screen fixed inset-0 z-[1000] grid place-items-center overflow-hidden p-6 text-center text-[#fff8df] transition-[opacity,transform,visibility] duration-[850ms] ease-in-out [background:linear-gradient(180deg,rgba(18,6,4,0.2)_0%,rgba(18,6,4,0.58)_100%),radial-gradient(circle_at_center,rgba(255,220,125,0.2),transparent_42%)]" aria-label="Presentacion del cuento">
+    <div class="intro-content relative z-[1] flex w-[min(92vw,980px)] flex-col items-center gap-[clamp(18px,4vw,34px)] animate-[introEntrada_0.9s_ease_both]">
+      <p class="intro-kicker m-0 text-[clamp(0.82rem,1.5vw,1rem)] font-bold uppercase tracking-[0.24em] text-[#ffe9a8] [text-shadow:0_3px_8px_rgba(0,0,0,0.46)]">Fabula de Esopo</p>
+      <h1 class="m-0 font-serif-title text-[clamp(3rem,9vw,7.4rem)] italic leading-[0.95] text-[#fffdf4] [text-shadow:0_6px_0_rgba(72,31,7,0.42),0_14px_34px_rgba(0,0,0,0.72)]">La Liebre y la Tortuga</h1>
+      <div class="intro-characters flex min-h-[clamp(160px,27vw,260px)] w-[min(100%,980px)] items-center justify-center gap-[clamp(18px,5vw,70px)]" aria-hidden="true">
+        <span class="conejo-pixel pixel-hero intro-character animate-[flotarIntro_2.8s_ease-in-out_infinite_alternate] drop-shadow-[0_18px_14px_rgba(0,0,0,0.38)]"></span>
+        <span class="tortuga-pixel pixel-hero intro-character animate-[flotarIntro_3.2s_ease-in-out_0.35s_infinite_alternate] drop-shadow-[0_18px_14px_rgba(0,0,0,0.38)]"></span>
       </div>
-      <label for="present-book" class="intro-button">Presentar libro</label>
+      <label for="present-book" class="intro-button fixed right-[clamp(18px,4vw,46px)] bottom-[clamp(18px,4vw,42px)] z-[2] inline-flex min-h-[54px] flex-none cursor-pointer items-center justify-center rounded-full border-2 border-[#fff8df]/80 bg-[#120604]/15 px-[34px] font-extrabold tracking-[0.03em] text-[#fff8df] shadow-[0_10px_22px_rgba(0,0,0,0.28),inset_0_0_18px_rgba(255,248,223,0.08)] backdrop-blur-sm transition duration-200 hover:-translate-y-[3px] hover:bg-[#fff8df]/20 hover:shadow-[0_16px_30px_rgba(0,0,0,0.42),inset_0_0_24px_rgba(255,248,223,0.14)]">Presentar libro</label>
     </div>
   </section>
 
-  <main class="main-container">
-    <div class="book-container">
+  <main class="main-container flex min-h-screen w-full items-center justify-center p-[22px] opacity-0 invisible pointer-events-none translate-y-7 scale-[0.96] transition-[opacity,transform,visibility] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-[250ms]">
+    <div class="book-container flex w-full items-center justify-center [perspective:1600px]">
       <div class="book">
         <span class="cover-left cover" aria-hidden="true"></span>
 
@@ -119,18 +119,31 @@
 
         <section class="page turn" id="page-flip-4">
           <div class="page-content-right page-face-front page-shell !p-0 overflow-hidden">
-            <div class="w-full h-full relative bg-cover bg-bottom"
-              style="background-image: url('imagenes/pixel_race_bg_simple.png'); background-position: right bottom;">
-              <h2
-                class="titulo-carrera absolute top-8 w-full text-center z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-white">
-                A correr</h2>
+            <div class="relative flex h-full w-full flex-col bg-gradient-to-b from-sky-400 to-sky-200">
+              <h2 class="titulo-carrera absolute top-8 z-10 w-full text-center text-white drop-shadow-md">A correr</h2>
+              <div class="sol-c absolute top-10 right-10 text-6xl text-yellow-300 drop-shadow-[0_0_15px_rgba(253,224,71,0.8)]">☀</div>
+              <div class="nube-c absolute top-20 left-10 text-4xl text-white opacity-80 [animation-delay:1s]">☁</div>
 
+              <div class="relative flex-1">
+                <div class="arbol-animado absolute right-16 bottom-0 z-0">
+                  <div class="relative mx-auto h-16 w-16">
+                    <div class="absolute top-0 left-2 h-4 w-12 bg-green-800"></div>
+                    <div class="absolute top-4 -left-2 h-12 w-20 bg-green-700 shadow-inner"></div>
+                    <div class="absolute top-16 left-0 h-4 w-16 bg-green-900"></div>
+                  </div>
+                  <div class="mx-auto h-12 w-4 border-r-2 border-amber-950 bg-amber-900"></div>
+                </div>
+              </div>
 
+              <div class="relative h-[40%] w-full border-t-4 border-emerald-600 bg-gradient-to-b from-emerald-500 to-emerald-700">
+                <div class="absolute top-0 bottom-0 left-8 w-2 bg-white/70"></div>
 
-              <span class="conejo-pixel pixel-sm absolute !bottom-25 !top-auto !translate-y-0 corredor"
-                aria-label="Liebre corriendo"></span>
-              <span class="tortuga-pixel pixel-sm absolute !bottom-15 !top-auto !translate-y-0 caminante"
-                aria-label="Tortuga caminando"></span>
+                <span class="corredor conejo-pixel pixel-sm absolute bottom-12 left-10 !top-auto !translate-y-0" aria-label="Liebre corriendo"></span>
+                <span class="caminante tortuga-pixel pixel-sm absolute bottom-2 left-10 !top-auto !translate-y-0" aria-label="Tortuga caminando"></span>
+
+                <div class="margarita absolute right-10 bottom-4"></div>
+                <div class="girasol absolute top-2 right-24"></div>
+              </div>
             </div>
             <label for="flip-checkbox-4" class="page-corner z-50" aria-label="Pasar pagina 4">
               <span class="arrow-red">➜</span>
@@ -161,16 +174,31 @@
           </div>
 
           <div class="page-content-left page-face-back page-shell !p-0 overflow-hidden">
-            <div class="w-full h-full relative bg-cover bg-bottom"
-              style="background-image: url('imagenes/pixel_race_bg_simple.png'); background-position: left bottom;">
-              <div class="absolute bottom-15 right-10 h-40 w-2 bg-white/80 z-0"></div>
+            <div class="relative flex h-full w-full flex-col bg-gradient-to-b from-sky-400 to-sky-200">
+              <div class="nube-c absolute top-12 left-1/4 text-5xl text-white opacity-80">☁</div>
 
-              <span class="zorro-pixel pixel-sm absolute !bottom-20 !top-auto !translate-y-0 right-20 -scale-x-100"
-                aria-label="Zorro dando la salida"></span>
-              <div class="absolute bottom-15 left-100 h-40 w-2 bg-white/80 z-0"></div>
+              <div class="relative flex-1">
+                <div class="absolute bottom-0 left-6 z-0 origin-bottom scale-125">
+                  <div class="arbol-animado">
+                    <div class="relative mx-auto h-24 w-24">
+                      <div class="absolute top-0 left-4 h-6 w-16 bg-green-800"></div>
+                      <div class="absolute top-6 -left-4 h-14 w-32 bg-green-700"></div>
+                      <div class="absolute top-20 left-0 h-6 w-24 bg-green-900"></div>
+                    </div>
+                    <div class="mx-auto h-16 w-6 border-r-4 border-amber-950 bg-amber-900"></div>
+                  </div>
+                </div>
+              </div>
 
-              <div class="absolute top-6 w-full flex justify-center">
-                <p class="cap-label bg-black/40 text-white px-4 py-1 rounded-full backdrop-blur-sm shadow-sm">Capitulo
+              <div class="relative h-[40%] w-full border-t-4 border-emerald-600 bg-gradient-to-b from-emerald-500 to-emerald-700">
+                <span class="zorro-pixel pixel-sm absolute right-4 bottom-6 animate-[desafio-zorro-flip_6s_infinite]" aria-label="Zorro dando la salida"></span>
+
+                <div class="rosa absolute bottom-8 left-8"></div>
+                <div class="tulipan absolute top-4 left-20"></div>
+              </div>
+
+              <div class="absolute top-6 flex w-full justify-center">
+                <p class="cap-label rounded-full bg-black/20 px-4 py-1 text-white shadow-sm backdrop-blur-sm">Capitulo
                   II</p>
               </div>
             </div>
@@ -179,7 +207,41 @@
         </section>
 
         <section class="page turn" id="page-flip-2">
-          <div class="page-content-right page-face-front page-shell">
+          <div class="page-content-right page-face-front page-shell !p-0">
+            <div class="character-sheet h-full w-full p-[clamp(16px,3vw,30px)] text-[#2c1a0e]">
+              <article class="character-poster relative flex h-full flex-col overflow-hidden px-[clamp(22px,3.8vw,42px)] py-[clamp(24px,4vw,44px)]">
+                <div class="story-landscape absolute inset-0 z-0 opacity-[0.18]" aria-hidden="true">
+                  <span class="cover-cloud-pixel cover-cloud-big absolute top-[64px] left-[70px] size-[var(--u)] [--u:10px]"></span>
+                  <span class="cover-cloud-pixel cover-cloud-small absolute top-[128px] right-[84px] size-[var(--u)] [--u:9px]"></span>
+                  <span class="cover-hill-layer cover-hill-back absolute left-0 bottom-[32px] z-[1] h-[168px] w-full bg-[#7ed321]"></span>
+                  <span class="cover-hill-layer cover-hill-mid absolute left-0 bottom-0 z-[2] h-[168px] w-full bg-[#55ad18]"></span>
+                  <span class="cover-hill-layer cover-hill-front absolute left-0 bottom-0 z-[3] h-[136px] w-full bg-[#27740d]"></span>
+                </div>
+                <div class="relative z-[2]">
+                  <h2 class="m-0 text-left font-serif-title text-[clamp(2.25rem,4.8vw,3.25rem)] font-bold italic leading-none text-[#2c1a0e]">La Tortuga</h2>
+                  <p class="mt-3 mb-0 max-w-[19rem] text-left font-serif-text text-[clamp(0.86rem,1.45vw,1rem)] leading-relaxed text-[#5c3d22]">Pequena, tranquila y paciente, avanzaba sin presumir. Cada paso suyo parecia decir que la constancia tambien puede ganar.</p>
+                </div>
+
+                <div class="pointer-events-none absolute inset-0 z-[1]" aria-hidden="true">
+                  <span class="ghost-particle ghost-a"></span>
+                  <span class="ghost-particle ghost-b"></span>
+                  <span class="ghost-particle ghost-c"></span>
+                </div>
+
+                <div class="relative z-[2] mt-auto flex flex-1 items-center justify-center">
+                  <div class="character-glow character-glow-turtle absolute"></div>
+                  <span class="tortuga-pixel character-turtle-main" aria-label="Tortuga"></span>
+                </div>
+
+                <p class="relative z-[2] m-0 text-center font-serif-title text-[clamp(1.45rem,3.2vw,1.95rem)] font-bold italic leading-tight text-[#2e7d32]">Lenta pero constante</p>
+              </article>
+            </div>
+            <label for="flip-checkbox-2" class="page-corner" aria-label="Pasar pagina 2">
+              <span class="arrow-red">➜</span>
+            </label>
+          </div>
+
+          <div class="hidden page-content-right page-face-front page-shell">
             <div class="character-cards">
               <div class="group w-full h-48 [perspective:1000px]">
                 <div class="flip-card group-hover:[transform:rotateY(180deg)]">
@@ -308,7 +370,7 @@
         </section>
 
         <section class="page turn" id="page-flip-1">
-          <div class="page-content-right page-face-front cover-page relative flex flex-col items-center justify-center gap-4 overflow-hidden rounded-r-[18px] bg-[linear-gradient(to_bottom,#10aee2_0%,#10aee2_48%,#2fc0e9_48%,#2fc0e9_56%,#58c9ed_56%,#58c9ed_64%,#82d8f4_64%,#82d8f4_72%,#b9ecfa_72%,#b9ecfa_100%)] p-[clamp(28px,5vw,54px)] text-center text-white [image-rendering:pixelated]">
+          <div class="page-content-right page-face-front cover-page relative flex flex-col items-center overflow-hidden rounded-r-[18px] !bg-[linear-gradient(to_bottom,#10aee2_0%,#10aee2_48%,#2fc0e9_48%,#2fc0e9_56%,#58c9ed_56%,#58c9ed_64%,#82d8f4_64%,#82d8f4_72%,#b9ecfa_72%,#b9ecfa_100%)] p-[clamp(22px,4vw,40px)] text-center text-white [image-rendering:pixelated] [perspective:900px]">
             <div class="cover-frame absolute inset-4 z-[8] rounded-[18px] border-4 border-[#f5c749]/70 pointer-events-none"></div>
             <div class="cover-landscape absolute inset-0 z-0 overflow-hidden pointer-events-none [image-rendering:pixelated]" aria-hidden="true">
               <span class="cover-cloud-pixel cover-cloud-big absolute top-[70px] left-[105px] size-[var(--u)] [--u:14px]"></span>
@@ -317,19 +379,51 @@
               <span class="cover-hill-layer cover-hill-mid absolute left-0 bottom-0 z-[2] h-[210px] w-full bg-[#55ad18]"></span>
               <span class="cover-hill-layer cover-hill-front absolute left-0 bottom-0 z-[3] h-[170px] w-full bg-[#27740d]"></span>
             </div>
-            <h1 class="relative z-[7] m-0 translate-y-[-56px] font-serif-title italic leading-[1.05] text-white text-[clamp(2.6rem,5vw,4.4rem)] [text-shadow:3px_3px_0_rgba(18,89,40,0.78),0_7px_14px_rgba(0,0,0,0.34)]">La Liebre<br>y la Tortuga</h1>
-            <div class="cover-characters absolute z-[6] right-[13%] bottom-[13%] left-[13%] h-[25%] flex items-end justify-between pointer-events-none" aria-hidden="true">
-              <span class="cover-carrot zanahoria-pixel pixel-cover-carrot absolute left-[-7%] bottom-[-7%]"></span>
+            <h1 class="relative z-[7] mt-6 mb-0 font-serif-title italic leading-[0.95] text-white text-[clamp(2.2rem,4.4vw,3.7rem)] [text-shadow:3px_3px_0_rgba(15,84,42,0.85),0_7px_12px_rgba(0,0,0,0.38)]">La Liebre<br>y la Tortuga</h1>
+            <div class="cover-characters absolute z-[6] right-[15%] bottom-[22%] left-[15%] flex items-end justify-between pointer-events-auto" aria-hidden="true">
               <span class="cover-rabbit conejo-pixel pixel-cover-animal"></span>
               <span class="cover-turtle tortuga-pixel pixel-cover-animal"></span>
             </div>
-            <label for="flip-checkbox-1" class="start-reading relative z-[9] mt-auto mb-1 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 border-white/90 bg-white/90 px-7 font-bold text-[#17406f] shadow-[0_9px_22px_rgba(0,0,0,0.3)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#fff8df]">Leer cuento</label>
+            <label for="flip-checkbox-1" class="start-reading absolute bottom-8 z-[9] inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 border-white/90 bg-white/90 px-7 font-bold text-[#17406f] shadow-[0_9px_22px_rgba(0,0,0,0.3)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#fff8df]">Leer cuento</label>
             <label for="flip-checkbox-1" class="page-corner cover-corner" aria-label="Abrir cuento">
               <span class="arrow-red">➜</span>
             </label>
           </div>
 
-          <div class="page-content-left page-face-back page-shell">
+          <div class="page-content-left page-face-back page-shell !p-0">
+            <div class="character-sheet h-full w-full p-[clamp(16px,3vw,30px)] text-[#2c1a0e]">
+              <article class="character-poster relative flex h-full flex-col overflow-hidden px-[clamp(22px,3.8vw,42px)] py-[clamp(24px,4vw,44px)]">
+                <div class="story-landscape absolute inset-0 z-0 opacity-[0.18]" aria-hidden="true">
+                  <span class="cover-cloud-pixel cover-cloud-big absolute top-[64px] left-[70px] size-[var(--u)] [--u:10px]"></span>
+                  <span class="cover-cloud-pixel cover-cloud-small absolute top-[128px] right-[84px] size-[var(--u)] [--u:9px]"></span>
+                  <span class="cover-hill-layer cover-hill-back absolute left-0 bottom-[32px] z-[1] h-[168px] w-full bg-[#7ed321]"></span>
+                  <span class="cover-hill-layer cover-hill-mid absolute left-0 bottom-0 z-[2] h-[168px] w-full bg-[#55ad18]"></span>
+                  <span class="cover-hill-layer cover-hill-front absolute left-0 bottom-0 z-[3] h-[136px] w-full bg-[#27740d]"></span>
+                </div>
+                <div class="relative z-[2]">
+                  <h2 class="m-0 text-left font-serif-title text-[clamp(2.25rem,4.8vw,3.25rem)] font-bold italic leading-none text-[#2c1a0e]">La Liebre</h2>
+                  <p class="mt-3 mb-0 max-w-[19rem] text-left font-serif-text text-[clamp(0.86rem,1.45vw,1rem)] leading-relaxed text-[#5c3d22]">Agil y orgullosa, corria por el bosque como un relampago. Le encantaba presumir su velocidad frente a todos.</p>
+                </div>
+
+                <div class="pointer-events-none absolute inset-0 z-[1]" aria-hidden="true">
+                  <span class="star-particle star-a"></span>
+                  <span class="star-particle star-b"></span>
+                  <span class="star-particle star-c"></span>
+                  <span class="star-particle star-d"></span>
+                </div>
+
+                <div class="relative z-[2] mt-auto flex flex-1 items-center justify-center">
+                  <div class="character-glow character-glow-rabbit absolute"></div>
+                  <span class="conejo-pixel character-rabbit-main" aria-label="Liebre"></span>
+                </div>
+
+                <p class="relative z-[2] m-0 text-center font-serif-title text-[clamp(1.45rem,3.2vw,1.95rem)] font-bold italic leading-tight text-[#c0541a]">Veloz y presumida</p>
+              </article>
+            </div>
+            <label for="flip-checkbox-1" class="page-corner back-corner" aria-label="Cerrar portada"></label>
+          </div>
+
+          <div class="hidden page-content-left page-face-back page-shell">
             <div class="characters-intro mx-auto flex h-full w-[min(100%,340px)] flex-col justify-center gap-[22px]">
               <p class="titulo-cuento">Los Personajes</p>
 
