@@ -206,8 +206,8 @@
   .pointer-events-none {
     pointer-events: none;
   }
-  .visible {
-    visibility: visible;
+  .invisible {
+    visibility: hidden;
   }
   .absolute {
     position: absolute;
@@ -266,9 +266,6 @@
   .flex {
     display: flex;
   }
-  .inline {
-    display: inline;
-  }
   .inline-block {
     display: inline-block;
   }
@@ -307,9 +304,6 @@
   .rotate-45 {
     rotate: 45deg;
   }
-  .transform {
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
   .animate-\[bubble-fade-1_12s_infinite\] {
     animation: bubble-fade-1 12s infinite;
   }
@@ -327,9 +321,6 @@
   }
   .animate-\[desafio-zorro_6s_infinite\] {
     animation: desafio-zorro 6s infinite;
-  }
-  .animate-\[pixel-cloud-drift_25s_linear_infinite\] {
-    animation: pixel-cloud-drift 25s linear infinite;
   }
   .flex-col {
     flex-direction: column;
@@ -2025,26 +2016,6 @@ body {
   inherits: false;
   initial-value: 1;
 }
-@property --tw-rotate-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-y {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-z {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-y {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -2235,11 +2206,6 @@ body {
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
-      --tw-rotate-x: initial;
-      --tw-rotate-y: initial;
-      --tw-rotate-z: initial;
-      --tw-skew-x: initial;
-      --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;
