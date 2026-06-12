@@ -118,35 +118,21 @@
         </section>
 
         <section class="page turn" id="page-flip-4">
-          <div class="page-content-right page-face-front page-shell race-page">
-            <h2 class="titulo-carrera">A correr</h2>
-            <div class="escenario-carrera">
-              <div class="cielo-carrera">
-                <span class="nube-c">☁</span>
-                <span class="sol-c">☀</span>
-                <span class="nube-c">☁</span>
-              </div>
-              <div class="pistas-bloque">
-                <div class="carril-wrap">
-                  <span class="nombre-carril">Liebre</span>
-                  <div class="pista pista-conejo">
-                    <span class="zzz">Zzz</span>
-                    <span class="corredor conejo-pixel pixel-xxs" aria-label="Liebre"></span>
-                  </div>
-                </div>
-                <div class="carril-wrap">
-                  <span class="nombre-carril">Tortuga</span>
-                  <div class="pista pista-tortu">
-                    <span class="corredor caminante tortuga-pixel pixel-xxs" aria-label="Tortuga"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="marcadores-carrera">
-                <span class="marcador">Salida</span>
-                <span class="marcador">Meta</span>
-              </div>
+          <div class="page-content-right page-face-front page-shell !p-0 overflow-hidden">
+            <div class="w-full h-full relative bg-cover bg-bottom"
+              style="background-image: url('imagenes/pixel_race_bg_simple.png'); background-position: right bottom;">
+              <h2
+                class="titulo-carrera absolute top-8 w-full text-center z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-white">
+                A correr</h2>
+
+
+
+              <span class="conejo-pixel pixel-sm absolute !bottom-25 !top-auto !translate-y-0 corredor"
+                aria-label="Liebre corriendo"></span>
+              <span class="tortuga-pixel pixel-sm absolute !bottom-15 !top-auto !translate-y-0 caminante"
+                aria-label="Tortuga caminando"></span>
             </div>
-            <label for="flip-checkbox-4" class="page-corner" aria-label="Pasar pagina 4">
+            <label for="flip-checkbox-4" class="page-corner z-50" aria-label="Pasar pagina 4">
               <span class="arrow-red">➜</span>
             </label>
           </div>
@@ -174,12 +160,21 @@
             </label>
           </div>
 
-          <div class="page-content-left page-face-back page-shell">
+          <div class="page-content-left page-face-back page-shell !p-0 overflow-hidden">
+            <div class="w-full h-full relative bg-cover bg-bottom"
+              style="background-image: url('imagenes/pixel_race_bg_simple.png'); background-position: left bottom;">
+              <div class="absolute bottom-15 right-10 h-40 w-2 bg-white/80 z-0"></div>
 
-            <img src="imagenes/tarj_carrera.png" alt="El zorro da la salida de la carrera"
-              class="absolute inset-0 w-full h-full object-fill -z-10">
+              <span class="zorro-pixel pixel-sm absolute !bottom-20 !top-auto !translate-y-0 right-20 -scale-x-100"
+                aria-label="Zorro dando la salida"></span>
+              <div class="absolute bottom-15 left-100 h-40 w-2 bg-white/80 z-0"></div>
 
-            <label for="flip-checkbox-3" class="page-corner back-corner" aria-label="Regresar pagina 3"></label>
+              <div class="absolute top-6 w-full flex justify-center">
+                <p class="cap-label bg-black/40 text-white px-4 py-1 rounded-full backdrop-blur-sm shadow-sm">Capitulo
+                  II</p>
+              </div>
+            </div>
+            <label for="flip-checkbox-3" class="page-corner back-corner z-50" aria-label="Regresar pagina 3"></label>
           </div>
         </section>
 
