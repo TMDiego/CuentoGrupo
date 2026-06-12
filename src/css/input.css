@@ -618,26 +618,6 @@ body {
     transform: scaleX(-1);
 }
 
-.cover-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: clamp(28px, 5vw, 54px);
-    text-align: center;
-    color: #fff;
-    background: linear-gradient(180deg, #38a9dd 0%, #246bd3 48%, #4aa74b 48%, #1e6f2b 100%);
-}
-
-.cover-frame {
-    position: absolute;
-    inset: 16px;
-    border: 4px solid rgba(245, 199, 73, 0.7);
-    pointer-events: none;
-    z-index: 4;
-}
-
 .cover-frame::after {
     content: "";
     position: absolute;
@@ -645,91 +625,75 @@ body {
     border: 1px solid rgba(255, 240, 168, 0.42);
 }
 
-.cover-sun {
+.cover-cloud-pixel::before,
+.cover-cloud-pixel::after {
+    content: "";
     position: absolute;
-    top: 8%;
-    right: 9%;
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #ffe566 0%, #f8bf3a 55%, #e8930a 100%);
-    box-shadow: 0 0 42px rgba(250, 204, 21, 0.65);
+    width: var(--u);
+    height: var(--u);
+    background: transparent;
 }
 
-.cover-cloud {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 3.8rem;
-    animation: flotar 5s ease-in-out infinite alternate;
+.cover-cloud-big::before {
+    box-shadow:
+        calc(2 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+        calc(3 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+        calc(4 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+        calc(1 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(2 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(3 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(4 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(5 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(0 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(1 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(2 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(3 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(4 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(5 * var(--u)) calc(2 * var(--u)) 0 #ffffff,
+        calc(6 * var(--u)) calc(2 * var(--u)) 0 #ffffff;
 }
 
-.cloud-a {
-    top: 12%;
-    left: 12%;
+.cover-cloud-big::after {
+    box-shadow:
+        calc(0 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(1 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(2 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(3 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(4 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(5 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(6 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8,
+        calc(7 * var(--u)) calc(3 * var(--u)) 0 #d8d8d8;
 }
 
-.cloud-b {
-    top: 22%;
-    right: 20%;
-    font-size: 3rem;
-    animation-delay: 0.8s;
+.cover-cloud-small::before {
+    box-shadow:
+        calc(1 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+        calc(2 * var(--u)) calc(0 * var(--u)) 0 #ffffff,
+        calc(0 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(1 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(2 * var(--u)) calc(1 * var(--u)) 0 #ffffff,
+        calc(3 * var(--u)) calc(1 * var(--u)) 0 #ffffff;
 }
 
-.cover-kicker {
-    z-index: 5;
-    margin: 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.36);
+.cover-cloud-small::after {
+    box-shadow:
+        calc(0 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+        calc(1 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+        calc(2 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+        calc(3 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8,
+        calc(4 * var(--u)) calc(2 * var(--u)) 0 #d8d8d8;
 }
 
-.cover-page h1 {
-    z-index: 5;
-    margin: 0;
-    font-family: var(--fuente-t);
-    font-size: clamp(2.6rem, 5vw, 4.4rem);
-    font-style: italic;
-    line-height: 1.05;
-    text-shadow: 0 5px 12px rgba(0, 0, 0, 0.48);
+.cover-hill-back {
+    clip-path: polygon(0% 70%, 12% 70%, 12% 62%, 18% 62%, 18% 55%, 27% 55%, 27% 48%, 45% 48%, 45% 55%, 58% 55%, 58% 62%, 72% 62%, 72% 70%, 100% 70%, 100% 100%, 0% 100%);
 }
 
-.cover-versus {
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    font-size: 2.8rem;
+.cover-hill-mid {
+    clip-path: polygon(0% 58%, 8% 58%, 8% 50%, 15% 50%, 15% 43%, 26% 43%, 26% 36%, 38% 36%, 38% 43%, 50% 43%, 50% 52%, 60% 52%, 60% 62%, 75% 62%, 75% 55%, 90% 55%, 90% 62%, 100% 62%, 100% 100%, 0% 100%);
 }
 
-.cover-versus strong {
-    font-family: var(--fuente-t);
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.86);
-}
-
-.start-reading {
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 0 28px;
-    border: 2px solid rgba(255, 255, 255, 0.88);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #17406f;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 18px;
-    box-shadow: 0 9px 22px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.start-reading:hover {
-    transform: translateY(-2px);
-    background: #fff8df;
+.cover-hill-front {
+    clip-path: polygon(0% 35%, 12% 35%, 12% 45%, 23% 45%, 23% 58%, 34% 58%, 34% 72%, 43% 72%, 43% 64%, 58% 64%, 58% 55%, 72% 55%, 72% 48%, 88% 48%, 88% 55%, 100% 55%, 100% 100%, 0% 100%);
 }
 
 .opening-scene {
@@ -744,7 +708,6 @@ body {
         linear-gradient(to right, rgba(232, 216, 184, 0.9), rgba(255, 253, 244, 0.4));
 }
 
-.cover-page .opening-sky,
 .opening-scene .opening-sky {
     position: absolute;
     inset: 0;
@@ -775,15 +738,8 @@ body {
 }
 
 .cloud-left {
-    top: 15%;
-    left: 12%;
-}
-
-.cloud-right {
-    top: 22%;
-    right: 22%;
-    transform: scale(0.86);
-    animation-delay: 0.7s;
+    top: 12%;
+    left: 10%;
 }
 
 .opening-track {
@@ -812,6 +768,34 @@ body {
     margin: -6px 0 2px;
 }
 
+.cover-carrot,
+.cover-rabbit,
+.cover-turtle {
+    filter: drop-shadow(0 5px 0 rgba(0, 0, 0, 0.18));
+}
+
+.pixel-cover-carrot {
+    --pixel: clamp(2px, 0.36vw, 2.7px);
+}
+
+.pixel-cover-animal {
+    --pixel: clamp(3.4px, 0.62vw, 4.8px);
+}
+
+.cover-carrot {
+    transform-origin: 50% 88%;
+    transform: rotate(-10deg);
+}
+
+.cover-rabbit {
+    animation: coverRabbitIdle 3.2s steps(3, end) infinite;
+}
+
+.cover-turtle {
+    transform: scaleX(-1);
+    animation: coverTurtleIdle 4.2s steps(3, end) infinite;
+}
+
 .opening-runner {
     position: absolute;
     bottom: 10px;
@@ -826,7 +810,6 @@ body {
     animation: tortugaCaminando 6.5s linear infinite;
 }
 
-.characters-intro,
 .character-cards {
     width: min(100%, 340px);
     height: 100%;
@@ -835,50 +818,6 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 22px;
-}
-
-.personaje-resumen {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 16px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.48);
-    box-shadow: 0 5px 16px rgba(80, 44, 12, 0.12);
-}
-
-.personaje-resumen span {
-    font-size: 3.5rem;
-    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
-}
-
-.personaje-resumen h3 {
-    margin: 0;
-    font-family: var(--fuente-t);
-    font-size: 1.55rem;
-}
-
-.personaje-resumen p {
-    margin: 4px 0 0;
-    color: var(--tinta-suave);
-}
-
-.liebre-card {
-    border: 1px solid rgba(217, 119, 6, 0.28);
-}
-
-.tortuga-card {
-    border: 1px solid rgba(5, 150, 105, 0.28);
-    text-align: right;
-}
-
-.versus-mark {
-    text-align: center;
-    font-family: var(--fuente-t);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--acento);
 }
 
 .pagina-texto {
@@ -1304,6 +1243,34 @@ body {
 
     to {
         translate: 16px 4px;
+    }
+}
+
+@keyframes coverRabbitIdle {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    35% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+
+    70% {
+        transform: translateY(0) rotate(1deg);
+    }
+}
+
+@keyframes coverTurtleIdle {
+    0%, 100% {
+        transform: scaleX(-1) translateY(0) rotate(0deg);
+    }
+
+    45% {
+        transform: scaleX(-1) translateY(-6px) rotate(-1deg);
+    }
+
+    75% {
+        transform: scaleX(-1) translateY(0) rotate(1deg);
     }
 }
 
