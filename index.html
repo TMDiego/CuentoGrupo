@@ -308,42 +308,47 @@
         </section>
 
         <section class="page turn" id="page-flip-1">
-          <div class="page-content-right page-face-front cover-page">
-            <div class="cover-frame"></div>
-            <div class="opening-sky">
-              <span class="cloud-left opening-cloud"></span>
-              <span class="cloud-right opening-cloud"></span>
+          <div class="page-content-right page-face-front cover-page relative flex flex-col items-center justify-center gap-4 overflow-hidden rounded-r-[18px] bg-[linear-gradient(to_bottom,#10aee2_0%,#10aee2_48%,#2fc0e9_48%,#2fc0e9_56%,#58c9ed_56%,#58c9ed_64%,#82d8f4_64%,#82d8f4_72%,#b9ecfa_72%,#b9ecfa_100%)] p-[clamp(28px,5vw,54px)] text-center text-white [image-rendering:pixelated]">
+            <div class="cover-frame absolute inset-4 z-[8] rounded-[18px] border-4 border-[#f5c749]/70 pointer-events-none"></div>
+            <div class="cover-landscape absolute inset-0 z-0 overflow-hidden pointer-events-none [image-rendering:pixelated]" aria-hidden="true">
+              <span class="cover-cloud-pixel cover-cloud-big absolute top-[70px] left-[105px] size-[var(--u)] [--u:14px]"></span>
+              <span class="cover-cloud-pixel cover-cloud-small absolute top-[165px] right-[185px] size-[var(--u)] [--u:12px]"></span>
+              <span class="cover-hill-layer cover-hill-back absolute left-0 bottom-[45px] z-[1] h-[210px] w-full bg-[#7ed321]"></span>
+              <span class="cover-hill-layer cover-hill-mid absolute left-0 bottom-0 z-[2] h-[210px] w-full bg-[#55ad18]"></span>
+              <span class="cover-hill-layer cover-hill-front absolute left-0 bottom-0 z-[3] h-[170px] w-full bg-[#27740d]"></span>
             </div>
-            <h1>La Liebre<br>y la Tortuga</h1>
-            <div class="opening-track cover-opening-track">
-              <span class="tortuga-pixel pixel-sm opening-runner opening-turtle" aria-label="Tortuga caminando"></span>
+            <h1 class="relative z-[7] m-0 translate-y-[-56px] font-serif-title italic leading-[1.05] text-white text-[clamp(2.6rem,5vw,4.4rem)] [text-shadow:3px_3px_0_rgba(18,89,40,0.78),0_7px_14px_rgba(0,0,0,0.34)]">La Liebre<br>y la Tortuga</h1>
+            <div class="cover-characters absolute z-[6] right-[13%] bottom-[13%] left-[13%] h-[25%] flex items-end justify-between pointer-events-none" aria-hidden="true">
+              <span class="cover-carrot zanahoria-pixel pixel-cover-carrot absolute left-[-7%] bottom-[-7%]"></span>
+              <span class="cover-rabbit conejo-pixel pixel-cover-animal"></span>
+              <span class="cover-turtle tortuga-pixel pixel-cover-animal"></span>
             </div>
-            <label for="flip-checkbox-1" class="start-reading">Leer cuento</label>
+            <label for="flip-checkbox-1" class="start-reading relative z-[9] mt-auto mb-1 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border-2 border-white/90 bg-white/90 px-7 font-bold text-[#17406f] shadow-[0_9px_22px_rgba(0,0,0,0.3)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#fff8df]">Leer cuento</label>
             <label for="flip-checkbox-1" class="page-corner cover-corner" aria-label="Abrir cuento">
               <span class="arrow-red">➜</span>
             </label>
           </div>
 
           <div class="page-content-left page-face-back page-shell">
-            <div class="characters-intro">
+            <div class="characters-intro mx-auto flex h-full w-[min(100%,340px)] flex-col justify-center gap-[22px]">
               <p class="titulo-cuento">Los Personajes</p>
 
-              <article class="personaje-resumen liebre-card">
-                <span class="conejo-pixel pixel-xxs" aria-label="Liebre"></span>
+              <article class="personaje-resumen flex items-center justify-between gap-4 rounded-[10px] border border-amber-600/30 bg-white/50 p-4 shadow-[0_5px_16px_rgba(80,44,12,0.12)]">
+                <span class="conejo-pixel pixel-xxs text-[3.5rem] drop-shadow" aria-label="Liebre"></span>
                 <div>
-                  <h3>La Liebre</h3>
-                  <p>Veloz y presumida</p>
+                  <h3 class="m-0 font-serif-title text-[1.55rem]">La Liebre</h3>
+                  <p class="mt-1 mb-0 text-[#5c3d22]">Veloz y presumida</p>
                 </div>
               </article>
 
-              <div class="versus-mark">vs</div>
+              <div class="text-center font-serif-title text-xl font-bold text-[#c0541a]">vs</div>
 
-              <article class="personaje-resumen tortuga-card">
+              <article class="personaje-resumen flex items-center justify-between gap-4 rounded-[10px] border border-emerald-600/30 bg-white/50 p-4 text-right shadow-[0_5px_16px_rgba(80,44,12,0.12)]">
                 <div>
-                  <h3>La Tortuga</h3>
-                  <p>Constante y paciente</p>
+                  <h3 class="m-0 font-serif-title text-[1.55rem]">La Tortuga</h3>
+                  <p class="mt-1 mb-0 text-[#5c3d22]">Constante y paciente</p>
                 </div>
-                <span class="tortuga-pixel pixel-xxs" aria-label="Tortuga"></span>
+                <span class="tortuga-pixel pixel-xxs text-[3.5rem] drop-shadow" aria-label="Tortuga"></span>
               </article>
             </div>
             <label for="flip-checkbox-1" class="page-corner back-corner" aria-label="Cerrar portada"></label>
